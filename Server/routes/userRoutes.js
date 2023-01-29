@@ -2,20 +2,9 @@ const express = require("express");
 
 const router = express.Router();
 
-const user = require('../schema');
-const path = require('path')
-const multer = require('multer')
-const upload = multer({ dest: 'uploads/' });
-// root: path.join(__dirname, 'public'),
-const options = { root: path.join(__dirname, '../front_end')}
-
-router.get("/", (req, res) => {
-  res.sendFile( "index.html" , options);
-});
-
-router.get("/home", (req, res) => {
-  res.sendFile( "homepage.html",options);
-});
+const user = require("../schema");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 router.post("/", (req, res) => {
   const { name, password } = req.body;
@@ -28,16 +17,17 @@ router.post("/", (req, res) => {
       return res.status(404).send("User not found");
     }
     if (password == user.password) {
-      return res.redirect("/home");
+      return res.status(200).send({status: "logged in"});
     } else {
       return res.status(401).send("Incorrect password");
     }
   });
 });
 
-router.post("/home", upload.single("pdf-file"), (req, res) => {
+router.post("/home", upload.single("file"), (req, res) => {
   console.log(req.file);
-  console.log(req.body)
+  console.log(req.body);
+  res.status(200).send({status: "file successfully uploaded"});
 });
 
 module.exports = router;

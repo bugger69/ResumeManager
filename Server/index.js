@@ -8,12 +8,13 @@ const userRoutes = require("./routes/userRoutes");
 
 //setting up express
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
+
+app.use(cors());
 
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
-app.set('view engine','ejs')
-app.set('views',path.join(__dirname ,  'front_end'))
+
 main().catch((err) => console.log(err));
 
 async function main() {
