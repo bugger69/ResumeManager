@@ -3,16 +3,18 @@ const express = require("express");
 const router = express.Router();
 
 const user = require('../schema');
-
+const path = require('path')
 const multer = require('multer')
 const upload = multer({ dest: 'uploads/' });
+// root: path.join(__dirname, 'public'),
+const options = { root: path.join(__dirname, '../front_end')}
 
 router.get("/", (req, res) => {
-  res.render( "index");
+  res.sendFile( "index.html" , options);
 });
 
 router.get("/home", (req, res) => {
-  res.sendFile(__dirname + "Server\front_end\homepage.html");
+  res.sendFile( "homepage.html",options);
 });
 
 router.post("/", (req, res) => {
