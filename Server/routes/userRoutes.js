@@ -4,12 +4,15 @@ const router = express.Router();
 
 const user = require('../schema');
 
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' });
+
 router.get("/", (req, res) => {
-  res.sendFile(__dirname + "/front_end/index.html");
+  res.render( "index");
 });
 
-router.get("/2", (req, res) => {
-  res.sendFile(__dirname + "");
+router.get("/home", (req, res) => {
+  res.sendFile(__dirname + "Server\front_end\homepage.html");
 });
 
 router.post("/", (req, res) => {
@@ -23,11 +26,16 @@ router.post("/", (req, res) => {
       return res.status(404).send("User not found");
     }
     if (password == user.password) {
-      return res.redirect("/2");
+      return res.redirect("/home");
     } else {
       return res.status(401).send("Incorrect password");
     }
   });
+});
+
+router.post("/home", upload.single("pdf-file"), (req, res) => {
+  console.log(req.file);
+  console.log(req.body)
 });
 
 module.exports = router;
