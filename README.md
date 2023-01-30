@@ -27,3 +27,8 @@ on the right terminal
 
 
 NOTE: frontend might be broken for a while, either me or the frontend team will fix it.
+
+
+30/09/23
+
+updated database
