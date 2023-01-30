@@ -14,6 +14,7 @@ to configure backblaze
 4. In B2 Cloud Storage->Buckets, create a bucket called `resume-manager`;
 5. Open the Server directory in the project and in the directory create a file called `.env`.
 6. in the .env file, enter the following keys
+
     APPLICATION_KEY_ID='Your KeyID of the key'
     
     APPLICATION_KEY='Your Application Key'
