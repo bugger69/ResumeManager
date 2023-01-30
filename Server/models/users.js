@@ -18,7 +18,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ['btech', 'mtech', 'phd'],
     default: 'btech'
-  }
+  },
+  resumes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'resume'
+    }
+  ]
 });
 
 module.exports = mongoose.model("user", UserSchema);
