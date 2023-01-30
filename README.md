@@ -24,3 +24,6 @@ on the right terminal
 `cd client`
 
 `npm start`
+
+
+NOTE: frontend might be broken for a while, either me or the frontend team will fix it.
