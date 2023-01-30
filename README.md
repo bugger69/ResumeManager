@@ -22,18 +22,18 @@ Now to run the project:
 
 on the left terminal
 
-`npm i`
-
 `cd Server`
+
+`npm i`
 
 `npm run dev`
 
 
 on the right terminal
 
-`npm i`
-
 `cd client`
+
+`npm i`
 
 `npm start`
 
