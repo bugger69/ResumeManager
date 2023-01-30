@@ -7,6 +7,6 @@ Users: email, name, password, date_of_birth, address (permanent and current), de
 
 Batches/Class: branchName, Year, students[array of student ids]
 
-Company: companyName, field, ...need more here
+Company: companyName, field, (...need more here)
 
 Intern: companyID ( work hours, pay and other stuff. Still figuring what to put here.) 
