@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const cors = require("cors");
 
-const userRoutes = require("./routes/userRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
 
 //setting up express
 const app = express();
@@ -25,7 +25,7 @@ async function main() {
   console.log("Mongo connection open");
 }
 
-app.use("/", userRoutes);
+app.use("/upload", uploadRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

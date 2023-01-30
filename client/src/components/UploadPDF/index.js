@@ -10,7 +10,7 @@ const Home = () => {
     data.append("file", file);
 
     axios
-      .post("http://localhost:4000/home", data, {
+      .post("http://localhost:4000/upload", data, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((file) => {

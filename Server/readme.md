@@ -9,4 +9,6 @@ Batches/Class: branchName, Year, students[array of student ids]
 
 Company: companyName, field, (...need more here)
 
-Intern: companyID ( work hours, pay and other stuff. Still figuring what to put here.) 
+Intern: companyID ( work hours, pay and other stuff. Still figuring what to put here.)
+
+TODO: PORT MONGOOSE SETUP TO CONFIG FOLDER.
