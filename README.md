@@ -11,8 +11,9 @@ to configure backblaze
 1. Create a backblaze account.
 2. Go to Account->App Keys.
 3. Either use the master key or create a new one depending on your choice. Just make sure the key has both read and write access.
-4. Open the Server directory in the project and in the directory create a file called `.env`.
-5. in the .env file, enter the following keys
+4. In B2 Cloud Storage->Buckets, create a bucket called `resume-manager`;
+5. Open the Server directory in the project and in the directory create a file called `.env`.
+6. in the .env file, enter the following keys
     APPLICATION_KEY_ID='Your KeyID of the key'
     APPLICATION_KEY='Your Application Key'
 
@@ -51,3 +52,5 @@ updated database
 30/09/23
 
 added backblaze and optimized routes.
+
+NOTE: STILL GOTTA ADD A WAY TO SAVE THE RESUME TO THE STUDENT, AS WELL AS FETCH IT LATER. BUT THAT WILL HAVE TO WAIT UNTIL PASSPORT AND SWAGGER ARE CONFIGURED.
