@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const user = require("../schema");
+const user = require("../models/users");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
