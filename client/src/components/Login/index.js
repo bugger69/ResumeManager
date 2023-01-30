@@ -9,7 +9,7 @@ const Login = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         const obj = {name: rollNo, password: dob };
-        axios.post("http://localhost:4000/", obj)
+        axios.post("http://localhost:4000/login", obj)
         .then((res) => {
             alert("Logged in!!!");
             window.location.href = "/";

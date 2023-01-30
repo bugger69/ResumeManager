@@ -20,24 +20,6 @@ async function GetBucket() {
 const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() });
 
-router.post("/login", (req, res) => {
-  const { name, password } = req.body;
-  console.log(req.body);
-  User.findOne({ name: name }, (err, User) => {
-    if (err) {
-      return res.status(500).send("Error occured while trying to login");
-    }
-    if (!User) {
-      return res.status(404).send("User not found");
-    }
-    if (password == User.password) {
-      return res.status(200).send({ status: "logged in" });
-    } else {
-      return res.status(401).send("Incorrect password");
-    }
-  });
-});
-
 router.post("/", upload.single("file"), async (req, res) => {
   try {
     // console.log(req.file);
@@ -59,8 +41,8 @@ router.post("/", upload.single("file"), async (req, res) => {
     // console.log(response);
     const resumeDetails = {
       fileId: response.data.fileId,
-      fileName: response.data.fileName
-    }
+      fileName: response.data.fileName,
+    };
     const resume = new Resume(resumeDetails);
     console.log(resume);
     res.status(200).send({ status: "file successfully uploaded" });

@@ -8,6 +8,7 @@ const bodyparser = require("body-parser");
 const cors = require("cors");
 
 const uploadRoutes = require("./routes/uploadRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 //setting up express
 const app = express();
@@ -25,6 +26,7 @@ async function main() {
   console.log("Mongo connection open");
 }
 
+app.use('/', userRoutes);
 app.use("/upload", uploadRoutes);
 
 app.listen(port, () => {
