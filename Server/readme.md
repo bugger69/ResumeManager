@@ -9,6 +9,6 @@ resume: fileId, fileName
 
 Batches/Class: branchName, Year, students[array of student ids]
 
-Company: companyName, field, (...need more here)
+Company: companyName, field, location, size, description
 
-Intern: companyID ( work hours, pay and other stuff. Still figuring what to put here.)
+Intern: companyID, description, start_date, end_date, Requirements, stipend, compensation(optional), application_deadline, supervision_and_mentorship, evaluation_and_feedback, hiring_process_info, eligiblity_for_fulltime_employment
