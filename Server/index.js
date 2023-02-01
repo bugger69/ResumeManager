@@ -14,20 +14,16 @@ const MongoDBStore = require("connect-mongo");
 const uploadRoutes = require("./routes/uploadRoutes");
 const userRoutes = require("./routes/userRoutes");
 
-const User = require("./models/users");
+const User = require("./models/user");
+const bodyParser = require("body-parser");
 
 //setting up express
 const app = express();
 const port = process.env.PORT || 4000;
 
-app.use(cors());
-
-app.use(bodyparser.urlencoded({ extended: false }));
-app.use(bodyparser.json());
+const db_url = process.env.DB_URL || "mongodb://localhost:27017/ResumeManager";
 
 main().catch((err) => console.log(err));
-
-const db_url = process.env.DB_URL || "mongodb://localhost:27017/ResumeManager";
 
 async function main() {
   await mongoose.connect(db_url, {
@@ -62,6 +58,11 @@ const sessionConfig = {
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
 };
+
+app.use(cors());
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(session(sessionConfig));
 app.use(passport.initialize());

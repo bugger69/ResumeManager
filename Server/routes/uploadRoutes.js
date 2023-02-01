@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const User = require("../models/users");
+const User = require("../models/user");
 const Resume = require("../models/resume");
 
 const b2 = require("../config/backblazeb2");
