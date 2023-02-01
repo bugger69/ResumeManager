@@ -47,12 +47,16 @@ NOTE: frontend might be broken for a while, either me or the frontend team will 
 Entire client side ported to React.
 
 
-30/09/23 9:03
+30/01/23 9:03
 
 updated database
 
-30/09/23 19:13
+30/01/23 19:13
 
 added backblaze and optimized routes.
 
-NOTE: STILL GOTTA ADD A WAY TO SAVE THE RESUME TO THE STUDENT, AS WELL AS FETCH IT LATER. BUT THAT WILL HAVE TO WAIT UNTIL PASSPORT AND SWAGGER ARE CONFIGURED.
+01/02/23
+
+got passport register route working, will work on swagger and login asap.
+
+NOTE: FRONTEND IS BROKEN, WILL FIX IT ASAP.
