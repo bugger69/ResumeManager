@@ -7,7 +7,19 @@ const User = require("../models/user");
 
 router.post("/register", async (req, res, next) => {
   try {
-    const {name, username, password, email, dob, p_address, c_address, designation, branch, year, course} = req.body;
+    const {
+      name,
+      username,
+      password,
+      email,
+      dob,
+      p_address,
+      c_address,
+      designation,
+      branch,
+      year,
+      course,
+    } = req.body;
     const user = new User({
       name,
       username,
@@ -18,37 +30,33 @@ router.post("/register", async (req, res, next) => {
       designation,
       branch,
       year,
-      course
+      course,
     });
     const registeredUser = await User.register(user, password);
     console.log(registeredUser);
-    req.login(registeredUser, err => {
-      if(err) {
+    req.login(registeredUser, (err) => {
+      if (err) {
         return next(err);
       }
-      return res.status(200).send({status: "success"});
-    })
+      return res.status(200).send({ status: "success" });
+    });
   } catch (e) {
     console.log(e);
-    return res.status(401).send({status: "error"});
+    return res.status(401).send({ status: "error" });
   }
 });
 
-router.post("/login", (req, res) => {
-  const { name, password } = req.body;
-  console.log(req.body);
-  User.findOne({ name: name }, (err, User) => {
+router.post("/login", passport.authenticate("local"), (req, res) => {
+  return res.status(200).send({ status: "logged in" });
+});
+
+router.get("/logout", (req, res, next) => {
+  req.logout((err) => {
     if (err) {
-      return res.status(500).send("Error occured while trying to login");
+      console.log(err);
+      return res.status(403).send({ status: "logout failed" });
     }
-    if (!User) {
-      return res.status(404).send("User not found");
-    }
-    if (password == User.password) {
-      return res.status(200).send({ status: "logged in" });
-    } else {
-      return res.status(401).send("Incorrect password");
-    }
+    res.status(200).send({ status: "logged out" });
   });
 });
 
