@@ -44,7 +44,7 @@ router.post("/", upload.single("file"), async (req, res) => {
       fileName: response.data.fileName,
     };
     const resume = new Resume(resumeDetails);
-    console.log(resume);
+    console.log(req.user._id);
     res.status(200).send({ status: "file successfully uploaded" });
   } catch (e) {
     console.log(e);
