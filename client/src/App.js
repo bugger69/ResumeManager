@@ -6,13 +6,15 @@ import {
 
 import UploadPDF from './components/UploadPDF';
 import Login from './components/Login';
+import Register from './components/Register';
 
 import './App.css';
 
 function App() {
   let routes = useRoutes([
     {path: "/", element: <UploadPDF />},
-    {path: "/login", element: <Login />}
+    {path: "/login", element: <Login />},
+    {path: "/register", element: <Register />}
   ]);
 
   return (
