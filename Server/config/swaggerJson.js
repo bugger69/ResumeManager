@@ -8,8 +8,13 @@ const options = {
       version: "1.0.0",
     },
     host: "localhost:4000",
+    servers: [
+      {
+        url: 'http://localhost:4000',
+        description: 'Development server',
+      },
+    ],
   },
-  // basePath: "/Server",
   apis: ["./routes/*.js"],
 };
 
