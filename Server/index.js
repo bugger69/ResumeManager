@@ -10,9 +10,11 @@ const cors = require("cors");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const MongoDBStore = require("connect-mongo");
+const swaggerUi = require("swagger-ui-express");
 
 const uploadRoutes = require("./routes/uploadRoutes");
 const userRoutes = require("./routes/userRoutes");
+const specs = require("./config/swaggerJson");
 
 const User = require("./models/user");
 const bodyParser = require("body-parser");
@@ -58,6 +60,8 @@ const sessionConfig = {
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
 };
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use(cors());
 

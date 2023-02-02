@@ -39,6 +39,8 @@ on the right terminal
 
 `npm start`
 
+SERVER DOCS: When the server is running, those working on the client side can see the server docs at "http://localhost:4000/api-docs/"
+
 
 NOTE: frontend might be broken for a while, either me or the frontend team will fix it.
 
@@ -58,5 +60,9 @@ added backblaze and optimized routes.
 01/02/23
 
 got passport register route working, will work on swagger and login asap.
+
+02/02/23
+
+swagger, login and logout are working. 
 
 NOTE: FRONTEND IS BROKEN, WILL FIX IT ASAP.

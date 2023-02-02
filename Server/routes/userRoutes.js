@@ -5,6 +5,60 @@ const router = express.Router();
 
 const User = require("../models/user");
 
+/**
+ * @swagger
+ * /register :
+ *    post:
+ *        tags:
+ *            - userRoutes
+ *        summary: Creates a user.
+ *        description: Creates an new user if the info is correct and logs them in.
+ *        basePath: /api/v1
+ *        requestBody:
+ *          required: true
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  name:
+ *                    type: string
+ *                  username:
+ *                    type: string
+ *                  email:
+ *                    type: string
+ *                  date_of_birth:
+ *                    type: string
+ *                    format: date-time
+ *                  permanent_address:
+ *                    type: string
+ *                  current_address:
+ *                    type: string
+ *                  designation:
+ *                    type: string
+ *                    enum:
+ *                      - student
+ *                      - tpr
+ *                      - professor
+ *                      - comp_representative
+ *                    default: student
+ *                  branch:
+ *                    type: string
+ *                  year:
+ *                    type: number
+ *                  course:
+ *                    type: string
+ *                    enum:
+ *                      - btech
+ *                      - mtech
+ *                      - phd
+ *                    default: btech
+ *                  resumes:
+ *                    type: array
+ *                    items:
+ *                      type: string
+ */
+
 router.post("/register", async (req, res, next) => {
   try {
     const {
@@ -38,7 +92,7 @@ router.post("/register", async (req, res, next) => {
       if (err) {
         return next(err);
       }
-      return res.status(200).send({ status: "success" });
+      return res.status(201).send({ status: "successfully registered" });
     });
   } catch (e) {
     console.log(e);
@@ -46,9 +100,41 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
+/**
+ * @swagger
+ * /login :
+ *    post:
+ *        tags:
+ *            - userRoutes
+ *        summary: Logs in a user.
+ *        description: Logs in a user.
+ *        basePath: /api/v1
+ *        requestBody:
+ *          required: true
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  username:
+ *                    type: string
+ *                  password:
+ *                    type: string
+ */
+
 router.post("/login", passport.authenticate("local"), (req, res) => {
   return res.status(200).send({ status: "logged in" });
 });
+
+/**
+ * @swagger
+ * /logout :
+ *    get:
+ *        tags:
+ *            - userRoutes
+ *        summary: Logs out a user.
+ *        description: Only works if the user is logged in.
+ */
 
 router.get("/logout", (req, res, next) => {
   req.logout((err) => {
