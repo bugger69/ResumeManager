@@ -9,7 +9,7 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const obj = { name: username, password: password };
+    const obj = { username: username, password: password };
     axios
       .post("http://localhost:4000/login", obj)
       .then((res) => {

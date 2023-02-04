@@ -122,7 +122,7 @@ router.post("/register", async (req, res, next) => {
  *                    type: string
  */
 
-router.post("/login", passport.authenticate("local"), (req, res) => {
+router.post("/login", passport.authenticate("local", {}), (req, res) => {
   return res.status(200).send({ status: "logged in" });
 });
 

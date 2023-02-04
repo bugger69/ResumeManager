@@ -66,3 +66,7 @@ got passport register route working, will work on swagger and login asap.
 swagger, login and logout are working. 
 
 NOTE: FRONTEND IS BROKEN, WILL FIX IT ASAP.
+
+04/02/23 
+now resumes are uploaded to backblaze, and a reference is stored in mongodb to locate the resume.
+Frontend still broken. Gotta fix that asap.

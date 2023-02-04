@@ -4,6 +4,7 @@ const router = express.Router();
 
 const User = require("../models/user");
 const Resume = require("../models/resume");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 const b2 = require("../config/backblazeb2");
 
@@ -20,7 +21,7 @@ async function GetBucket() {
 const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() });
 
-router.post("/", upload.single("file"), async (req, res) => {
+router.post("/", upload.single("file"), isLoggedIn, async (req, res) => {
   try {
     // console.log(req.file);
     const fileContents = req.file.buffer;
@@ -44,7 +45,12 @@ router.post("/", upload.single("file"), async (req, res) => {
       fileName: response.data.fileName,
     };
     const resume = new Resume(resumeDetails);
-    console.log(req.user._id);
+    // console.log(req.user?"user found": "user not found");
+    const user = await User.findById(req.user._id.toString());
+    user.resumes.push(resume);
+    // console.log(user);
+    await resume.save();
+    await user.save();
     res.status(200).send({ status: "file successfully uploaded" });
   } catch (e) {
     console.log(e);
