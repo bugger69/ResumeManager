@@ -11,6 +11,7 @@ const Home = () => {
 
     axios
       .post("http://localhost:4000/upload", data, {
+        withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((file) => {
