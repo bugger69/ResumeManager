@@ -70,3 +70,6 @@ NOTE: FRONTEND IS BROKEN, WILL FIX IT ASAP.
 04/02/23 
 now resumes are uploaded to backblaze, and a reference is stored in mongodb to locate the resume.
 Frontend still broken. Gotta fix that asap.
+
+05/02/23
+frontend patched up, files are uploading and login/register possible. Still need a logout button and error messages are a bit weird, gotta fix that too.
