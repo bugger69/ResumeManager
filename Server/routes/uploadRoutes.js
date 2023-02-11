@@ -21,6 +21,26 @@ async function GetBucket() {
 const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() });
 
+/**
+ * @swagger
+ * /upload :
+ *    post:
+ *        tags:
+ *            - uploadRoutes
+ *        summary: Route to upload Resume.
+ *        description: Uploads the resume to the database. Upload the file to the file input and send the request.
+ *        basePath: /api/v1
+ *        requestBody:
+ *          required: true
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  file:
+ *                    type: string
+ */
+
 router.post("/", upload.single("file"), isLoggedIn, async (req, res) => {
   try {
     // console.log(req.file);
