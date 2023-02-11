@@ -1,5 +1,7 @@
 Tasks:
 
+Note: The login page seems to be broken...
+SideNote: try not to clutter here.
 <<<<<<< HEAD
 Create a homepage @anubhav
 
