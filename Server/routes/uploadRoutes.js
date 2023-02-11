@@ -41,7 +41,7 @@ const upload = multer({ storage: multer.memoryStorage() });
  *                    type: string
  */
 
-router.post("/", upload.single("file"), isLoggedIn, async (req, res) => {
+router.post("/resume", upload.single("file"), isLoggedIn, async (req, res) => {
   try {
     // console.log(req.file);
     const fileContents = req.file.buffer;

@@ -12,7 +12,7 @@ const Login = () => {
     const obj = { username: username, password: password };
     
     axios
-      .post("http://localhost:4000/login", obj)
+      .post("http://localhost:4000/api/login", obj)
       .then((res) => {
         alert("Logged in!!!");
         window.location.href = "/";

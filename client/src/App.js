@@ -11,8 +11,6 @@ import Register from './components/Register';
 import Home from './components/UploadPDF';
 import EditForm from './components/EditForm';
 
-import './App.css';
-// import EditForm from './components/EditForm';
 import UserPage from './components/UserPage';
 
 function App() {

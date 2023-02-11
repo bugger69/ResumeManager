@@ -32,7 +32,7 @@ const Register = () => {
       course: course,
     };
     axios
-      .post("http://localhost:4000/register", obj)
+      .post("http://localhost:4000/api/register", obj)
       .then((res) => {
         alert("Logged in!!!");
         window.location.href = "/";
