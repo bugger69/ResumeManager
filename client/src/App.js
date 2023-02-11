@@ -20,7 +20,7 @@ function App() {
     {path: "/register", element: <Register />},
     {path: "/home", element: <Home/>},
     {path: "/editinfo", element: <EditForm/> },
-    {path: "/UserPage", element: <UserPage />},
+    {path: "/userpage", element: <UserPage />},
     
   ]);
 

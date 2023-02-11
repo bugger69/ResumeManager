@@ -3,6 +3,7 @@ const isLoggedIn = (req, res, next) => {
     console.log("authenticated");
     return next();
   }
+  console.log("not authenticated");
   throw new Error("User not authenticated");
 };
 
