@@ -1,5 +1,6 @@
 Tasks:
 
+<<<<<<< HEAD
 Create a homepage @anubhav
 
 -> For now a link for the student to go to the upload page.
@@ -8,6 +9,21 @@ Create a userpage @manthan
 
 -> A button to logout.
 -> Some user Info.
+=======
+Tasks:
+
+Create a homepage @anubhav
+
+    -> For now a link for the student to go to the upload page.
+    -> A link to a update form that will update the data of the user. (I will create these later.)
+
+
+Create a userpage @manthan
+
+    -> A button to logout.
+    -> Some user Info.
+
+>>>>>>> df7aa654ddfdc76644f6e950d0ac004eccef5f7f
 To start the application, run the following
 
 git pull
@@ -15,6 +31,10 @@ git pull
 if you haven't yet cloned the repository, run
 
 git clone <insert-repo-link-here>
+
+if you haven't yet cloned the repository, run
+
+`git clone <insert-repo-link-here>`
 
 (ctrl + shift + 5) or open a split terminal
 

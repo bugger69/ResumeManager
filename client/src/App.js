@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css' ;
 import {
   BrowserRouter as Router,
   useRoutes
@@ -12,6 +13,7 @@ import EditForm from './components/EditForm';
 
 import './App.css';
 // import EditForm from './components/EditForm';
+import UserPage from './components/UserPage';
 
 function App() {
   let routes = useRoutes([
@@ -19,7 +21,9 @@ function App() {
     {path: "/login", element: <Login />},
     {path: "/register", element: <Register />},
     {path: "/home", element: <Home/>},
-    {path: "/editinfo", element: <EditForm/> }
+    {path: "/editinfo", element: <EditForm/> },
+    {path: "/UserPage", element: <UserPage />},
+    
   ]);
 
   return (
