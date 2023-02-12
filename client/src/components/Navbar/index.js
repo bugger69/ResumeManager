@@ -36,6 +36,11 @@ function Navbar(){
               Build resume
             </a>
           </li>
+          <li className="nav-item">
+            <a className="nav-link" href="http://localhost:4000/api/userpage">
+              Temp Logout
+            </a>
+          </li>
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"

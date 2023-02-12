@@ -62,85 +62,85 @@ const Register = () => {
           id="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <label className="label" htmlFor="password">
+        <label className="label" htmlFor="name">
           Name:
         </label>
         <input
           className="input"
           type="text"
-          id="password"
+          id="name"
           onChange={(e) => setName(e.target.value)}
         />
-        <label className="label" htmlFor="password">
+        <label className="label" htmlFor="email">
           Email:
         </label>
         <input
           className="input"
           type="email"
-          id="password"
+          id="email"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label className="label" htmlFor="password">
+        <label className="label" htmlFor="date_of_birth">
           Date of birth:
         </label>
         <input
           className="input"
           type="date"
-          id="password"
+          id="date_of_birth"
           onChange={(e) => setDob(e.target.value)}
         />
-        <label className="label" htmlFor="password">
+        <label className="label" htmlFor="p_address">
           Permanent address:
         </label>
         <input
           className="input"
           type="text"
-          id="password"
+          id="p_address"
           onChange={(e) => setPaddress(e.target.value)}
         />
-        <label className="label" htmlFor="password">
+        <label className="label" htmlFor="c_address">
           Current address:
         </label>
         <input
           className="input"
           type="text"
-          id="password"
+          id="c_address"
           onChange={(e) => setCaddress(e.target.value)}
         />
-        <label className="label" htmlFor="password">
+        <label className="label" htmlFor="designation">
           Designation:
         </label>
         <input
           className="input"
           type="text"
-          id="password"
+          id="designation"
           onChange={(e) => setDesignation(e.target.value)}
         />
-        <label className="label" htmlFor="password">
+        <label className="label" htmlFor="branch">
           Branch:
         </label>
         <input
           className="input"
           type="text"
-          id="password"
+          id="branch"
           onChange={(e) => setBranch(e.target.value)}
         />
-        <label className="label" htmlFor="password">
+        <label className="label" htmlFor="year">
           Year:
         </label>
         <input
           className="input"
           type="number"
-          id="password"
+          id="year"
           onChange={(e) => setYear(e.target.value)}
         />
-        <label className="label" htmlFor="password">
+        <label className="label" htmlFor="course">
           Course:
         </label>
         <input
           className="text"
           type="text"
-          id="password"
+          id="course"
           onChange={(e) => setCourse(e.target.value)}
         />
         <button className="button" type="submit" value="submit">
