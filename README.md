@@ -2,7 +2,7 @@ Tasks:
 
 Note: The login page seems to be broken...
 SideNote: try not to clutter here.
-<<<<<<< HEAD
+
 Create a homepage @anubhav
 
 -> For now a link for the student to go to the upload page.
@@ -10,22 +10,10 @@ Create a homepage @anubhav
 Create a userpage @manthan
 
 -> A button to logout.
--> Some user Info.
+-> Some user Info
+
 =======
-Tasks:
 
-Create a homepage @anubhav
-
-    -> For now a link for the student to go to the upload page.
-    -> A link to a update form that will update the data of the user. (I will create these later.)
-
-
-Create a userpage @manthan
-
-    -> A button to logout.
-    -> Some user Info.
-
->>>>>>> df7aa654ddfdc76644f6e950d0ac004eccef5f7f
 To start the application, run the following
 
 git pull
