@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import "./login.css";
 
-const Login = () => {
+const Login = (props) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
@@ -12,12 +12,17 @@ const Login = () => {
     const obj = { username: username, password: password };
     
     axios
-      .post("http://localhost:4000/api/login", obj)
+      .post("http://localhost:4000/api/login", obj, {
+        withCredentials: true
+      })
       .then((res) => {
-        alert("Logged in!!!");
+        if(res.status === 200) {
+          alert("Logged in!!!");
         window.location.href = "/";
+        }
       })
       .catch((e) => {
+        alert("error");
         console.log(e);
       });
   };

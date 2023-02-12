@@ -1,5 +1,6 @@
 const express = require("express");
 const passport = require("passport");
+const signature = require("cookie-signature");
 
 const router = express.Router();
 
@@ -122,8 +123,20 @@ router.post("/register", async (req, res, next) => {
  *                    type: string
  */
 
-router.post("/login", passport.authenticate("local", {}), (req, res) => {
-  return res.status(200).send({ status: "logged in" });
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) throw err;
+    if (!user) res.send("No User Exists");
+    else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        console.log(req.sessionID);
+        // res.status(200).cookie('connect.sid','s:' + signature.sign(req.sessionID, process.env.SECRET_KEY));
+        res.status(200).send({status: "logged in"});
+        console.log(req.user);
+      });
+    }
+  })(req, res, next);
 });
 
 /**
@@ -145,5 +158,11 @@ router.get("/logout", (req, res, next) => {
     res.status(200).send({ status: "logged out" });
   });
 });
+
+// will need this one later, hence need to fix up this one.
+
+router.get("/user", (req, res, next) => {
+  res.send(req.user);
+})
 
 module.exports = router;
