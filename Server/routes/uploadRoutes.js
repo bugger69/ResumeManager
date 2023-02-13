@@ -23,7 +23,7 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 /**
  * @swagger
- * /upload :
+ * /api/upload :
  *    post:
  *        tags:
  *            - uploadRoutes

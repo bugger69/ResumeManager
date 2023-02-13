@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const EditForm = () => {
   const [username, setUsername] = useState();
   //   const [password, setPassword] = useState();
-  const [name, setName] = useState();
+  // const [name, setName] = useState();
   //   const [email, setEmail] = useState();
   const [dob, setDob] = useState();
   const [paddress, setPaddress] = useState();
@@ -17,14 +17,14 @@ const EditForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const obj = {
-      name: name,
+      // name: name,
       username: username,
-      password: password,
-      email: email,
+      // password: password,
+      // email: email,
       dob: dob,
       p_address: paddress,
       c_address: caddress,
-      designation: designation,
+      // designation: designation,
       branch: branch,
       year: year,
       course: course,
@@ -33,6 +33,7 @@ const EditForm = () => {
     .get("http://localhost:4000/user/userid")
     .then((res) => {
       let data = { ...res.data };
+      console.log(data);
     });
     axios
       .put("http://localhost:4000/register", obj)

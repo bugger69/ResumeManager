@@ -5,12 +5,13 @@ SideNote: try not to clutter here.
 
 Create a homepage @anubhav
 
--> For now a link for the student to go to the upload page.
--> A link to a update form that will update the data of the user. (I will create these later.)
-Create a userpage @manthan
+-> I've created a route for the server to send user data when requested. Use it to finish the user page and edit form.
+-> When I create a route to edit user data, use it to test your edit form.
 
--> A button to logout.
--> Some user Info
+Create a userpage and navbar @manthan
+
+-> The logout button is added, make sure it sends a request to /logout when it is clicked.
+-> Added a new navbar, but it needs fixing, you'll know when you run it. Fix it.
 
 =======
 

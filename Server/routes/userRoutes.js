@@ -1,14 +1,14 @@
 const express = require("express");
 const passport = require("passport");
-const signature = require("cookie-signature");
 
 const router = express.Router();
 
 const User = require("../models/user");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 /**
  * @swagger
- * /register :
+ * /api/register :
  *    post:
  *        tags:
  *            - userRoutes
@@ -103,7 +103,7 @@ router.post("/register", async (req, res, next) => {
 
 /**
  * @swagger
- * /login :
+ * /api/login :
  *    post:
  *        tags:
  *            - userRoutes
@@ -132,7 +132,7 @@ router.post("/login", (req, res, next) => {
         if (err) throw err;
         console.log(req.sessionID);
         // res.status(200).cookie('connect.sid','s:' + signature.sign(req.sessionID, process.env.SECRET_KEY));
-        res.status(200).send({status: "logged in"});
+        res.status(200).send({ status: "logged in" });
         console.log(req.user);
       });
     }
@@ -141,7 +141,7 @@ router.post("/login", (req, res, next) => {
 
 /**
  * @swagger
- * /logout :
+ * /api/logout :
  *    get:
  *        tags:
  *            - userRoutes
@@ -161,8 +161,34 @@ router.get("/logout", (req, res, next) => {
 
 // will need this one later, hence need to fix up this one.
 
-router.get("/user", (req, res, next) => {
-  res.send(req.user);
-})
+/**
+ * @swagger
+ * /api/user :
+ *    get:
+ *        tags:
+ *            - userRoutes
+ *        summary: Fetches user data for a user that's already logged in.
+ *        description: Only works if the user is logged in.
+ */
+
+router.get("/user", isLoggedIn, (req, res, next) => {
+  if (req.user) {
+    const userData = {
+      id: req.user._id,
+      name: req.user.name,
+      username: req.user.username,
+      email: req.user.email,
+      permanent_address: req.user.permanent_address,
+      current_address: req.user.current_address,
+      designation: req.user.designation,
+      branch: req.user.branch,
+      year: req.user.year,
+      course: req.user.course,
+    };
+    res.status(200).send(userData);
+  } else {
+    throw new Error("User Not Found.");
+  }
+});
 
 module.exports = router;
