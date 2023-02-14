@@ -191,4 +191,58 @@ router.get("/user", isLoggedIn, (req, res, next) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/user :
+ *    post:
+ *        tags:
+ *            - userRoutes
+ *        summary: Edits the provided fields for a user.
+ *        description: Can be used to edit user data that may have entered wrong at some point. None of the fields are required.
+ *        basePath: /api/v1
+ *        requestBody:
+ *          required: true
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  username:
+ *                    type: string
+ *                  password:
+ *                    type: string
+ *                  permanent_address:
+ *                    type: string
+ *                  current_address:
+ *                    type: string
+ *                  branch:
+ *                    type: string
+ *                  year:
+ *                    type: string
+ *                  course:
+ *                    type: string
+ */
+
+router.post("/user", (req, res, next) => {
+  if(req.user) {
+    const id = req.user.id;
+    const userData = {
+      username: req.body.username,
+      email: req.body.email,
+      date_of_birth: req.body.dob,
+      permanent_address: req.body.permanent_address,
+      current_address: req.body.current_address,
+      branch: req.body.branch,
+      year: req.body.year,
+      course: req.body.course,
+    };
+    User.findByIdAndUpdate(id, userData).then((resp) => {
+      console.log(resp);
+      res.status(200).send({status: "user updated"});
+    }).catch((e) => {
+      console.log(e);
+    })
+  }
+});
+
 module.exports = router;
