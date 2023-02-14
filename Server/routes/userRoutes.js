@@ -223,7 +223,7 @@ router.get("/user", isLoggedIn, (req, res, next) => {
  *                    type: string
  */
 
-router.post("/user", (req, res, next) => {
+router.post("/user", isLoggedIn ,(req, res, next) => {
   if(req.user) {
     const id = req.user.id;
     const userData = {
