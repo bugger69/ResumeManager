@@ -4,14 +4,21 @@ SideNote: try not to clutter here.
 
 Continue with the Homepage @anubhav
 
+
 -> Add in the css and make sure that is the default page we go to.
+
 -> Focus only on the student and tpr view at the moment.
+
 -> Make sure it leads to all required places(check the use cases in srs)
+
 
 Fix the navbar @manthan
 
+
 -> The logout button is added, make sure it sends a request to /logout when it is clicked.
+
 -> Added a new navbar, but it needs fixing, you'll know when you run it. Fix the css.
+
 -> Lastly, make sure all the links work, and the navbar links to all important locations.
 
 =======
