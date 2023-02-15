@@ -15,7 +15,7 @@ Continue with the Homepage @anubhav
 Fix the navbar @manthan
 
 
--> The logout button is added, make sure it sends a request to /logout when it is clicked.
+-> The logout button is added, make sure it sends a request to 'http://localhost:4000/api/logout' when it is clicked.
 
 -> Added a new navbar, but it needs fixing, you'll know when you run it. Fix the css.
 
