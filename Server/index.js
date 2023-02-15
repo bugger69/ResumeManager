@@ -61,14 +61,12 @@ const sessionConfig = {
   },
 };
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-const whitelist = ["http://localhost:3000", "https://proxy.hoppscotch.io/"];
+const whitelist = ["http://localhost:3000", "chrome-extension://amknoiejhlmhancpahfcfcfhllgkpbld"];
 const corsOptions = {
   credentials: true, // This is important.
   origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
+    console.log(origin);
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
@@ -78,15 +76,28 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//   res.header("Access-Control-Allow-Credentials", "true");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, api_key, Authorization"
+  );
+  next();
+});
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.get("/api-docs", swaggerUi.setup(null, {
+  swaggerOptions: {
+      requestInterceptor: function(request){
+          request.headers.Origin = `http://localhost:4000`;
+          return request;
+      },
+      url: `http://localhost:4000/docs/api-doc`
+  }
+}))
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
