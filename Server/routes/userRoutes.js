@@ -194,7 +194,7 @@ router.get("/user", isLoggedIn, (req, res, next) => {
 /**
  * @swagger
  * /api/user :
- *    post:
+ *    put:
  *        tags:
  *            - userRoutes
  *        summary: Edits the provided fields for a user.
@@ -223,7 +223,7 @@ router.get("/user", isLoggedIn, (req, res, next) => {
  *                    type: string
  */
 
-router.post("/user", isLoggedIn ,(req, res, next) => { // add checks to check the presence of every field.
+router.put("/user", isLoggedIn ,(req, res, next) => { // add checks to check the presence of every field.
   if(req.user) {
     const id = req.user.id;
     const userData = {
