@@ -126,7 +126,7 @@ router.post("/register", async (req, res, next) => {
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send("No User Exists");
+    if (!user) res.status(400).send("No User Exists");
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
@@ -223,7 +223,7 @@ router.get("/user", isLoggedIn, (req, res, next) => {
  *                    type: string
  */
 
-router.post("/user", isLoggedIn ,(req, res, next) => {
+router.post("/user", isLoggedIn ,(req, res, next) => { // add checks to check the presence of every field.
   if(req.user) {
     const id = req.user.id;
     const userData = {

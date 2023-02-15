@@ -1,5 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import "./editForm.css";
 
 const EditForm = () => {
   const [username, setUsername] = useState();
@@ -13,6 +15,24 @@ const EditForm = () => {
   const [branch, setBranch] = useState();
   const [year, setYear] = useState();
   const [course, setCourse] = useState();
+
+  useEffect(() => {
+    axios
+    .get("http://localhost:4000/api/user",{withCredentials: true})
+    .then((res) => {
+      let data = { ...res.data };
+      console.log(data);
+      setUsername(data.username);
+      setDob(data.date_of_birth);
+      setPaddress(data.p_address);
+      setCaddress(data.c_address);
+      setBranch(data.branch);
+      setYear(data.Year);
+      setCourse(data.Course);
+    }).catch((e) => {
+      console.log(e);
+    });
+  }, [setUsername, setDob, setPaddress, setCaddress, setBranch, setYear, setCourse]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -29,23 +49,21 @@ const EditForm = () => {
       year: year,
       course: course,
     };
-    axios
-    .get("http://localhost:4000/user/userid")
-    .then((res) => {
-      let data = { ...res.data };
-      console.log(data);
-    });
-    axios
-      .put("http://localhost:4000/register", obj)
-      .then((res) => {
-        alert("Logged in!!!");
-        // window.location.href = "/";
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    // axios
+    //   .put("http://localhost:4000/api/edit", obj)
+    //   .then((res) => {
+    //     // alert("Logged in!!!");
+    //     // window.location.href = "/";
+    //     console.log(res);
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
   };
-// const date_ = '2023-02-11T10:42:07.971Z'
+const date_ = '2023-02-11T10:42:07.971Z';
+const newDate = new Date(date_);
+const finalDate = newDate.getFullYear() + '-' + (newDate.getMonth() < 10 ? '0' + (newDate.getMonth() + 1) : newDate.getMonth() + 1)  + '-' + (newDate.getDate() < 10 ? '0' + newDate.getDate(): newDate.getDate()); 
+console.log(finalDate);
 // const date = new Date(Date.parse(date_))
 // console.log(date)
 

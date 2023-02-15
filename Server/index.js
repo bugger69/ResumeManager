@@ -55,11 +55,14 @@ const sessionConfig = {
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
-    // secure: true,
+    secure: false,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
 };
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const whitelist = ["http://localhost:3000", "https://proxy.hoppscotch.io/"];
 const corsOptions = {
@@ -77,18 +80,15 @@ app.use(cors(corsOptions));
 
 // app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//   // res.header("Access-Control-Allow-Credentials", "true");
-//   // res.header(
-//   //   "Access-Control-Allow-Headers",
-//   //   "Origin, X-Requested-With, Content-Type, Accept"
-//   // );
+//   res.header("Access-Control-Allow-Credentials", "true");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
 //   next();
 // });
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 app.use(session(sessionConfig));
 app.use(passport.initialize());
