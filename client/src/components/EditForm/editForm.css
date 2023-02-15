@@ -1,0 +1,50 @@
+.cont {
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  }
+  
+  .input {
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+  }
+  
+  .input label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input input {
+    font: inherit;
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 0.15rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input input:focus {
+    outline: none;
+    border-color: #4f005f;
+  }
+  
+  .button {
+    font: inherit;
+    border: 1px solid #4f005f;
+    background: #4f005f;
+    color: white;
+    padding: 0.25rem 1rem;
+    cursor: pointer;
+  }
+  
+  .button:hover,
+  .button:active {
+    background: #741188;
+    border-color: #741188;
+  }
+  
+  .button:focus {
+    outline: none;
+  }
