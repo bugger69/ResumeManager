@@ -130,10 +130,10 @@ router.post("/login", (req, res, next) => {
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        console.log(req.sessionID);
+        // console.log(req.sessionID);
         // res.status(200).cookie('connect.sid','s:' + signature.sign(req.sessionID, process.env.SECRET_KEY));
         res.status(200).send({ status: "logged in" });
-        console.log(req.user);
+        // console.log(req.user);
       });
     }
   })(req, res, next);

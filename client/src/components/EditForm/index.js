@@ -24,8 +24,8 @@ const EditForm = () => {
       console.log(data);
       setUsername(data.username);
       setDob(data.date_of_birth);
-      setPaddress(data.p_address);
-      setCaddress(data.c_address);
+      setPaddress(data.permanent_address);
+      setCaddress(data.current_address);
       setBranch(data.branch);
       setYear(data.Year);
       setCourse(data.Course);
@@ -91,7 +91,7 @@ console.log(finalDate);
           className="input"
           type="text"
           id="username"
-          value={data.name}
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <label className="label" htmlFor="dob">
@@ -101,7 +101,7 @@ console.log(finalDate);
           className="input"
           type="date"
           id="dob"
-          value={data.dob}
+          value={dob}
           onChange={(e) => setDob(e.target.value)}
         />
         <label className="label" htmlFor="padd">
@@ -111,7 +111,7 @@ console.log(finalDate);
           className="input"
           type="text"
           id="padd"
-          value={data.padd}
+          value={paddress}
           onChange={(e) => setPaddress(e.target.value)}
         />
         <label className="label" htmlFor="cadd">
@@ -121,7 +121,7 @@ console.log(finalDate);
           className="input"
           type="text"
           id="cadd"
-          value={data.cadd}
+          value={caddress}
           onChange={(e) => setCaddress(e.target.value)}
         />
 
@@ -132,7 +132,7 @@ console.log(finalDate);
           className="input"
           type="text"
           id="branch"
-          value={data.branch}
+          value={branch}
           onChange={(e) => setBranch(e.target.value)}
         />
         <label className="label" htmlFor="year">
@@ -142,7 +142,7 @@ console.log(finalDate);
           className="input"
           type="number"
           id="year"
-          value={data.year}
+          value={year}
           onChange={(e) => setYear(e.target.value)}
         />
         <label className="label" htmlFor="course">
@@ -152,7 +152,7 @@ console.log(finalDate);
           className="text"
           type="text"
           id="course"
-          value={data.course}
+          value={course}
           onChange={(e) => setCourse(e.target.value)}
         />
         <button className="button" type="submit" value="submit">
