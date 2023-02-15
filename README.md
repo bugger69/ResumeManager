@@ -2,15 +2,17 @@ Tasks:
 
 SideNote: try not to clutter here.
 
-Create a homepage @anubhav
+Continue with the Homepage @anubhav
 
--> I've created a route for the server to send user data when requested. Use it to finish the user page and edit form.
--> When I create a route to edit user data, use it to test your edit form.
+-> Add in the css and make sure that is the default page we go to.
+-> Focus only on the student and tpr view at the moment.
+-> Make sure it leads to all required places(check the use cases in srs)
 
-Create a userpage and navbar @manthan
+Fix the navbar @manthan
 
 -> The logout button is added, make sure it sends a request to /logout when it is clicked.
--> Added a new navbar, but it needs fixing, you'll know when you run it. Fix it.
+-> Added a new navbar, but it needs fixing, you'll know when you run it. Fix the css.
+-> Lastly, make sure all the links work, and the navbar links to all important locations.
 
 =======
 
