@@ -49,7 +49,7 @@ store.on("error", function (e) {
 
 const sessionConfig = {
   store,
-  name: process.env.SESSION_NAME || "notasession",
+  name: process.env.SESSION_NAME || "shutTheFuckUp",
   secret: secret,
   resave: false,
   saveUninitialized: true,
