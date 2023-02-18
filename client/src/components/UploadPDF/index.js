@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Home = () => {
+import Navbar from "../Navbar";
+
+import "./upload.css";
+
+const Upload = () => {
   const [file, setFile] = useState();
 
   const onSubmit = (e) => {
@@ -16,6 +20,8 @@ const Home = () => {
       })
       .then((file) => {
         console.log("worked ", file);
+        alert("Uploaded!");
+        window.location.href = "/";
       })
       .catch((e) => {
         console.log(e);
@@ -24,16 +30,21 @@ const Home = () => {
 
   // post to http://localhost:4000/home
   return (
-    <form onSubmit={onSubmit}>
-      <p>Submit your resume pdf here ( Resume pdf should be 12 Mb or less )</p>
-      <input
-        type="file"
-        id="pdf-file"
-        onChange={(e) => setFile(e.target.files[0])}
-      />
-      <button type="submit">Upload</button>
-    </form>
+    <>
+      <div className="">
+      <Navbar />
+      </div>
+
+      <form className="container float-right d-inline-block" style={{marginTop: "6em"}}  onSubmit={onSubmit}>
+        <input
+          type="file"
+          id="pdf-file"
+          onChange={(e) => setFile(e.target.files[0])}
+        />
+        <button type="submit">Upload</button>
+      </form>
+    </>
   );
 };
 
-export default Home;
+export default Upload;

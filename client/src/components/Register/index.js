@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Navbar from "../Navbar";
 
 import "./register.css";
 
@@ -41,7 +42,8 @@ const Register = () => {
         console.log(e);
       });
   };
-  return (
+  return (<>
+  <Navbar />
     <div className="cont">
       <form className="input" onSubmit={onSubmit}>
         <label className="label" htmlFor="username">
@@ -148,6 +150,7 @@ const Register = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

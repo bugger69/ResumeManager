@@ -15,12 +15,12 @@ import 'bootstrap/dist/css/bootstrap.min.css' ;
 
 function App(props) {
   let routes = useRoutes([
-    {path: "/", element: <Home/>},
-    {path: "/upload", element: <UploadPDF />},
-    {path: "/login", element: <Login setIsLoggedIn={props.setIsLoggedIn} />},
-    {path: "/register", element: <Register />},
-    {path: "/editinfo", element: <EditForm/> },
-    {path: "/userpage", element: <UserPage />},
+    {path: "/", element: <Home isLoggedIn={props.isLoggedIn} setIsLoggedIn={props.setIsLoggedIn} />},
+    {path: "/upload", element: <UploadPDF isLoggedIn={props.isLoggedIn} setIsLoggedIn={props.setIsLoggedIn} />},
+    {path: "/login", element: <Login isLoggedIn={props.isLoggedIn} setIsLoggedIn={props.setIsLoggedIn} />},
+    {path: "/register", element: <Register isLoggedIn={props.isLoggedIn} setIsLoggedIn={props.setIsLoggedIn} />},
+    {path: "/editinfo", element: <EditForm isLoggedIn={props.isLoggedIn} setIsLoggedIn={props.setIsLoggedIn} /> },
+    {path: "/userpage", element: <UserPage isLoggedIn={props.isLoggedIn} setIsLoggedIn={props.setIsLoggedIn} />},
   ]);
 
   return (

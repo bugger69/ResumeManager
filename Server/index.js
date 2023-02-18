@@ -65,7 +65,7 @@ const whitelist = ["http://localhost:3000", "chrome-extension://amknoiejhlmhancp
 const corsOptions = {
   credentials: true, // This is important.
   origin: function (origin, callback) {
-    console.log(origin);
+    // console.log(origin);
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true)
     } else {

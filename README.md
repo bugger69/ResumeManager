@@ -2,10 +2,12 @@ Tasks:
 
 SideNote: try not to clutter here.
 
+Note: Homepage is broken, and the failed login needs work, but other than that, rest seems to be working fine.
+
 Continue with the Homepage @anubhav
 
 
--> Add in the css and make sure that is the default page we go to.
+-> Add in the css to other pages and try to get the homepage working(since I have no idea what you did there).
 
 -> Focus only on the student and tpr view at the moment.
 
@@ -15,11 +17,7 @@ Continue with the Homepage @anubhav
 Fix the navbar @manthan
 
 
--> The logout button is added, make sure it sends a request to 'http://localhost:4000/api/logout' when it is clicked.
-
--> Added a new navbar, but it needs fixing, you'll know when you run it. Fix the css.
-
--> Lastly, make sure all the links work, and the navbar links to all important locations.
+-> FIX THE CSS OF THE NAVBAR AT LEAST.
 
 =======
 

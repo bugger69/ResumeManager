@@ -1,26 +1,42 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Studentview from "./student";
 import Tprview from "./tpr";
 import Recruiterview from "./recruiter";
+import Navbar from "../Navbar";
 
+import AuthContext from "../store/auth-context";
 
-const Home= (props)=>{
-    // axios
-    // .get("http://localhost:4000/")
-    // .then((res) => {
-    //   alert("fuck you");
-    //   console.log(res);
-    // //   window.location.href = "/";
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
-    return <React.Fragment>
-    <h1>Home sweet home</h1>
-    {props.designation === 'Student' && <Studentview/>}
-    {props.designation === 'Tpr' && <Tprview/>}
-    {props.designation === 'Recruiter' && <Recruiterview/>}
+const Home = (props) => {
+  const ctx = useContext(AuthContext);
+
+  console.log(ctx.isLoggedIn);
+  console.log(localStorage.getItem('isLoggedIn'));
+//   if(localStorage.getItem('isLoggedIn') !== "1") {
+//       window.location.href = '/login';
+//   }
+  const [data, setData] = useState({});
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/user", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+        setData(res.data);
+        //   window.location.href = "/";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [setData]);
+  return (
+    <React.Fragment>
+      <Navbar />
+      {data.designation === "Student" && <Studentview />}
+      {data.designation === "Tpr" && <Tprview />}
+      {data.designation === "Recruiter" && <Recruiterview />}
     </React.Fragment>
-}
+  );
+};
 export default Home;

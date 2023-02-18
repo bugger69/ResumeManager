@@ -1,11 +1,16 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import Navbar from "../Navbar";
+import AuthContext from "../store/auth-context";
 
 import "./login.css";
 
 const Login = (props) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+
+  const authCtx = useContext(AuthContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -17,8 +22,9 @@ const Login = (props) => {
       })
       .then((res) => {
         if(res.status === 200) {
+          authCtx.onLogin();
           alert("Logged in!!!");
-        window.location.href = "/";
+          window.location.href = "/";
         }
       })
       .catch((e) => {
@@ -26,7 +32,8 @@ const Login = (props) => {
         console.log(e);
       });
   };
-  return (
+  return (<>
+    <Navbar />
     <div className="cont">
       <form className="input" onSubmit={onSubmit}>
         <label className="label" htmlFor="username">Username:</label>
@@ -48,6 +55,7 @@ const Login = (props) => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

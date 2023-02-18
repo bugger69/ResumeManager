@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { CSSTransition } from "react-transition-group";
+import axios from "axios";
+
+import AuthContext from "../store/auth-context";
 
 import "./navbar.css";
 
 function Navbar() {
   const [isNavVisible, setNavVisibility] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  const ctx = useContext(AuthContext);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 700px)");
@@ -29,7 +34,24 @@ function Navbar() {
     setNavVisibility(!isNavVisible);
   };
 
-  // add logout functionality
+  const onSubmit = (e) => {
+    e.preventDefault()
+    axios
+      .get("http://localhost:4000/api/logout", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          ctx.onLogout();
+          alert("Logged Out!!!");
+          window.location.href = "/";
+        }
+      })
+      .catch((e) => {
+        alert("error");
+        console.log(e);
+      });
+  };
 
   return (
     <header className="Header">
@@ -40,11 +62,12 @@ function Navbar() {
         unmountOnExit
       >
         <nav className="Nav">
-          <a href="/home">Home</a>
+          <a href="/">Home</a>
           <a href="/userpage">User Page</a>
+          <a href="/upload">Upload</a>
           <a href="/login">Login</a>
           <a href="/register">Register</a>
-          <button >Logout</button>
+          <button onClick={onSubmit}>Logout</button>
         </nav>
       </CSSTransition>
       <button onClick={toggleNav} className="Burger">
