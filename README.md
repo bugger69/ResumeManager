@@ -7,8 +7,6 @@ Note: Homepage is broken, and the failed login needs work, but other than that, 
 Continue with the Homepage @anubhav
 
 
--> Add in the css to other pages and try to get the homepage working(since I have no idea what you did there).
-
 -> Focus only on the student and tpr view at the moment.
 
 -> Make sure it leads to all required places(check the use cases in srs)
