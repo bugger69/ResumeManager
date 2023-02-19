@@ -1,12 +1,17 @@
 import React from "react";
 
 const Studentview = ()=> {
-    
+    const Updf = (e) =>{
+        window.location.href = "/upload"
+    }
+    const Udata = (e) =>{
+        window.location.href = "/editinfo"
+    }
     return <React.Fragment>
     <p>Upload Pdf</p>
-    <button>Go</button>
+    <button onClick = {Updf}>Go</button>
     <p>Update Data </p>
-    <button>Go</button>
+    <button onClick = {Udata}>Go</button>
     </React.Fragment>
 }
 export default Studentview; 

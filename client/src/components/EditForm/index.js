@@ -31,7 +31,7 @@ const EditForm = () => {
       setCaddress(data.current_address);
       setBranch(data.branch);
       setYear(data.year);
-      setCourse(data.Course);
+      setCourse(data.course);
     }).catch((e) => {
       console.log(e);
     });
@@ -50,7 +50,7 @@ const EditForm = () => {
       // designation: designation,
       branch: branch,
       year: year,
-      course: course,
+      course: course
     };
     axios
       .put("http://localhost:4000/api/user", obj, {withCredentials: true})
@@ -154,7 +154,7 @@ const EditForm = () => {
           Course:
         </label>
         <input
-          className="text"
+          className="input"
           type="text"
           id="course"
           value={course}

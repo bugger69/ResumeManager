@@ -33,9 +33,9 @@ const Home = (props) => {
   return (
     <React.Fragment>
       <Navbar />
-      {data.designation === "Student" && <Studentview />}
-      {data.designation === "Tpr" && <Tprview />}
-      {data.designation === "Recruiter" && <Recruiterview />}
+      {data.designation === "student" && <Studentview />}
+      {data.designation === "tpr" && <Tprview />}
+      {data.designation === "recruiter" && <Recruiterview />}
     </React.Fragment>
   );
 };
