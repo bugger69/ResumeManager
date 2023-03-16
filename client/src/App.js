@@ -29,7 +29,6 @@ function App(props) {
 }
 
 const AppWrapper = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return <Router>
     <App />
   </Router>
