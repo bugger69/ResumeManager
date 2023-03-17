@@ -8,7 +8,9 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 // create a batch
 
-router.post("/batch", isLoggedIn, (req, res, next) => {});
+router.post("/batch", isLoggedIn, (req, res, next) => {
+    const {branchName, year, passOut, tprId} = req.body;
+});
 
 // get resumes from a batch
 

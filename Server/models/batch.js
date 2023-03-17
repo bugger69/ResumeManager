@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const batchSchema = new mongoose.Schema({
     branchName: String, // change to enum later
     year: Number, // add a condition later
+    passOut: Number,
     students: [
         {
             type: mongoose.Schema.Types.ObjectId,

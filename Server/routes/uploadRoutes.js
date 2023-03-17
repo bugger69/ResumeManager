@@ -74,6 +74,7 @@ router.post("/resume", upload.single("file"), isLoggedIn, async (req, res) => {
     res.status(200).send({ status: "file successfully uploaded" });
   } catch (e) {
     console.log(e);
+    res.status(400).send({status: "unable to upload"});
   }
 });
 
