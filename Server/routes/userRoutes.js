@@ -223,7 +223,7 @@ router.get("/user", isLoggedIn, (req, res, next) => {
  *                    type: string
  */
 
-router.put("/user", isLoggedIn ,(req, res, next) => { // add checks to check the presence of every field.
+router.put("/user", isLoggedIn ,(req, res, next) => { // add checks to check the presence of every field, turn this into a try-catch.
   if(req.user) {
     const id = req.user.id;
     const userData = {
