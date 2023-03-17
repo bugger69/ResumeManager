@@ -12,9 +12,9 @@ const Home = (props) => {
 
   console.log(ctx.isLoggedIn);
   console.log(localStorage.getItem('isLoggedIn'));
-  // if(!ctx.isLoggedIn) {
-  //     window.location.href = '/login';
-  // }
+  if(!ctx.isLoggedIn) {
+      window.location.href = '/login';
+  }
   const [data, setData] = useState({});
   useEffect(() => {
     axios
