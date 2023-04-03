@@ -4,6 +4,7 @@ import Studentview from "./student";
 import Tprview from "./tpr";
 import Recruiterview from "./recruiter";
 import Navbar from "../Navbar";
+import "./home.css" ;
 
 import AuthContext from "../store/auth-context";
 
