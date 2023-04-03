@@ -20,7 +20,7 @@ const b2 = require("../config/backblazeb2");
 async function GetBucket() {
   try {
     await b2.authorize();
-    let response = await b2.getBucket({ bucketName: "resume-manager" });
+    let response = await b2.getBucket({ bucketName: process.env.BUCKET_NAME || "resume-manager"});
     return response.data;
   } catch (err) {
     console.log("Error getting bucket:", err);
@@ -79,6 +79,7 @@ router.get("/resumes/:batchId", isLoggedIn, async (req, res, next) => {
         const resumeId = stud.resumes[0];
         const fileName = student.resumes[0].fileName;
         const bucket = await GetBucket();
+        console.log(bucket);
         // console.log(bucket);
         const bucketId = bucket.buckets[0].bucketId;
         const bucketName = bucket.buckets[0].bucketName;
