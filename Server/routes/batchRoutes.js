@@ -27,6 +27,21 @@ async function GetBucket() {
   }
 }
 
+// route to get batch id
+
+router.get("/:tprId", isLoggedIn, async (req, res, next) => {
+  try {
+    const tprId = req.params.tprId;
+    const batch = await Batch.find({tpr: tprId}).exec();
+    res.status(200).send({batchId: batch[0]._id});
+  } catch (e) {
+    console.log(e);
+    res.status(400).send({ msg: "An error occured" });
+  }
+});
+
+
+
 // create a batch
 
 router.post("/", isLoggedIn, async (req, res, next) => {
