@@ -4,10 +4,10 @@ import axios from "axios";
 const Tprview = () => {
   const recievePdf = async () => {
     try {
-      const tprId = null || "642bf49b7f5fa375e6ca6ea9";
-      console.log(tprId);
+      const batchId = null || "642bf49b7f5fa375e6ca6ea9";
+      console.log(batchId);
       const response = await axios.get(
-        `http://localhost:4000/api/batch/resumes/${tprId}`,
+        `http://localhost:4000/api/batch/resumes/${batchId}`,
         { responseType: "blob", withCredentials: true }
       );
       const zipBlob = new Blob([response.data], { type: "application/zip" });
