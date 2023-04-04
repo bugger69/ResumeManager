@@ -13,7 +13,7 @@ const Home = (props) => {
 
   console.log(ctx.isLoggedIn);
   console.log(localStorage.getItem('isLoggedIn'));
-  if(!ctx.isLoggedIn) {
+  if(!ctx.isLoggedIn && localStorage.getItem('isLoggedIn')) {
       window.location.href = '/login';
   }
   const [data, setData] = useState({});
