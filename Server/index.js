@@ -90,10 +90,11 @@ app.use(function (req, res, next) {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/api-docs", swaggerUi.setup(null, {
+app.get("/api-docs", swaggerUi.setup(null, { // fix the mime type error
   swaggerOptions: {
       requestInterceptor: function(request){
           request.headers.Origin = `http://localhost:4000`;
+          request.headers['X-Content-Type-Options']= 'nosniff';
           return request;
       },
       url: `http://localhost:4000/docs/api-doc`
