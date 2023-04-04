@@ -245,4 +245,13 @@ router.put("/user", isLoggedIn ,(req, res, next) => { // add checks to check the
   }
 });
 
+// route to get your own resume
+ router.get("/user/resume", isLoggedIn, (req, res, next) => {
+  if (req.user) {
+    // get the latest resume
+    console.log(req.user);
+  }
+  res.status(200).send("hit the route");
+ })
+
 module.exports = router;
