@@ -11,7 +11,6 @@ const b2 = require("../config/backblazeb2");
 async function GetBucket() {
   try {
     await b2.authorize();
-    console.log("hrerdff");
     let response = await b2.getBucket({ bucketName: process.env.BUCKET_NAME || "resume-manager" });
     return response.data;
   } catch (err) {

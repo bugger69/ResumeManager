@@ -7,11 +7,11 @@ const Studentview = ()=> {
     const Udata = (e) =>{
         window.location.href = "/editinfo"
     }
-    return <React.Fragment>
+    return <div className="student">
     <p>Upload Pdf</p>
     <button onClick = {Updf}>Go</button>
     <p>Update Data </p>
     <button onClick = {Udata}>Go</button>
-    </React.Fragment>
+    </div>
 }
 export default Studentview; 

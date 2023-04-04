@@ -2,10 +2,10 @@ import React from "react";
 
 const Recruiterview = ()=> {
     
-    return <React.Fragment>
+    return <div className="recruiter">
     <p>Create Internship</p>
     <button>Go</button>
   
-    </React.Fragment>
+    </div>
 }
 export default Recruiterview;
