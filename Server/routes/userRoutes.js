@@ -259,6 +259,17 @@ router.put("/user", isLoggedIn ,(req, res, next) => { // add checks to check the
 });
 
 // route to get your own resume
+
+/**
+ * @swagger
+ * /api/user/resume :
+ *    get:
+ *        tags:
+ *            - userRoutes
+ *        summary: Allows a user that's logged in to fetch his own resume.
+ *        description: Only works if the user is logged in.
+ */
+
  router.get("/user/resume", isLoggedIn, async (req, res, next) => {
   try {
     if (req.user) {
@@ -295,6 +306,6 @@ router.put("/user", isLoggedIn ,(req, res, next) => { // add checks to check the
   } catch (e) {
     console.log(e);
   }
- })
+ });
 
 module.exports = router;
