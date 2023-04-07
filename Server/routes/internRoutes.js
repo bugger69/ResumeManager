@@ -183,18 +183,13 @@ router.get("/applications/:internId", isLoggedIn, async (req, res, next) => { //
           validDurationInSeconds: 300000, // a number from 0 to 604800
           // ...common arguments (optional)
         });
-        // console.log(fileInfo);
-        // console.log(auth);
 
-        // const downloadUrl = `https://f${bucketName}.backblazeb2.com/file/${bucketName}/${fileName}?Authorization=${auth.data.authorizationToken}`;
         const file = await b2.downloadFileById({
           fileId: fileId,
           responseType: "json",
           onDownloadProgress: (event) => {},
         });
-        // console.log(downloadUrl);
-        // allResumes.push(downloadUrl);
-        // console.log(fileName);
+ 
         zip.file(fileName, file.data );
         zip.file(`${user.username}.pdf`, JSON.stringify(user));
       }

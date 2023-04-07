@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
   current_address: String,
   designation: {
     type: String,
-    enum: ['student', 'tpr', 'professor', 'comp_representative', 'admin'],
+    enum: ['student', 'tpr', 'professor', 'comp_representative', 'admin'], // add checks in the routes
     default: 'student'
   },
   branch: String, // change this to enum
