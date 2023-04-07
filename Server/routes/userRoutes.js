@@ -1,10 +1,23 @@
 const express = require("express");
 const passport = require("passport");
+const JSZip = require("jszip");
+const b2 = require("../config/backblazeb2");
 
 const router = express.Router();
 
 const User = require("../models/user");
+const Resume = require("../models/resume");
 const isLoggedIn = require("../middleware/isLoggedIn");
+
+async function GetBucket() {
+  try {
+    await b2.authorize();
+    let response = await b2.getBucket({ bucketName: process.env.BUCKET_NAME || "resume-manager" });
+    return response.data;
+  } catch (err) {
+    console.log("Error getting bucket:", err);
+  }
+}
 
 /**
  * @swagger
@@ -244,5 +257,55 @@ router.put("/user", isLoggedIn ,(req, res, next) => { // add checks to check the
     })
   }
 });
+
+// route to get your own resume
+
+/**
+ * @swagger
+ * /api/user/resume :
+ *    get:
+ *        tags:
+ *            - userRoutes
+ *        summary: Allows a user that's logged in to fetch his own resume.
+ *        description: Only works if the user is logged in.
+ */
+
+ router.get("/user/resume", isLoggedIn, async (req, res, next) => {
+  try {
+    if (req.user) {
+      const size = req.user.resumes.length;
+      const resumeData = await Resume.findById(req.user.resumes[size - 1]);
+      console.log(req.user);
+      console.log(resumeData);
+      const fileId = resumeData.fileId;
+      const fileName = resumeData.fileName;
+
+      const bucket = await GetBucket();
+
+      const bucketId = bucket.buckets[0].bucketId;
+
+      const zip = new JSZip();
+
+      const auth = await b2.getDownloadAuthorization({
+        bucketId: bucketId,
+        fileNamePrefix: "",
+        validDurationInSeconds: 300000, // a number from 0 to 604800
+        // ...common arguments (optional)
+      });
+
+      const file = await b2.downloadFileById({
+        fileId: fileId,
+        responseType: "json",
+        onDownloadProgress: (event) => {},
+      });
+      
+      zip.file(fileName, file.data );
+      const zipData = await zip.generateAsync({ type: 'nodebuffer' });
+      res.status(200).send(zipData);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+ });
 
 module.exports = router;

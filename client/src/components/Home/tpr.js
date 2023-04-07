@@ -4,9 +4,9 @@ import axios from "axios";
 const Tprview = () => {
   const recievePdf = async () => {
     try {
-      const tprId = await axios.get(`http://localhost:4000/api/batch`,{withCredentials : true})
-      const batchId = tprId ;
-      console.log(tprId);
+      const batchData = await axios.get(`http://localhost:4000/api/batch`,{withCredentials : true});
+      console.log(batchData);
+      const batchId = batchData.data.batchId ;
       console.log(batchId);
       const response = await axios.get(
         `http://localhost:4000/api/batch/resumes/${batchId}`,
