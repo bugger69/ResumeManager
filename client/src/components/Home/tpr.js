@@ -4,10 +4,12 @@ import axios from "axios";
 const Tprview = () => {
   const recievePdf = async () => {
     try {
-      const tprId = null || "642bf49b7f5fa375e6ca6ea9";
+      const tprId = await axios.get(`http://localhost:4000/api/batch`,{withCredentials : true})
+      const batchId = tprId ;
       console.log(tprId);
+      console.log(batchId);
       const response = await axios.get(
-        `http://localhost:4000/api/batch/resumes/${tprId}`,
+        `http://localhost:4000/api/batch/resumes/${batchId}`,
         { responseType: "blob", withCredentials: true }
       );
       const zipBlob = new Blob([response.data], { type: "application/zip" });
@@ -42,11 +44,18 @@ const Tprview = () => {
       <button onClick={Updf}>Go</button>
       <p>Update Data </p>
       <button onClick={Udata}>Go</button>
-      // <p>Collect your resume</p>
-      // <button onClick={ownPdf}>collect</button>
+      
       <p>Collect Resumes of your Batch</p>
       <button onClick={recievePdf}>collect</button>
     </React.Fragment>
   );
 };
 export default Tprview;
+
+
+
+
+
+
+// <p>Collect your resume</p>
+      // <button onClick={ownPdf}>collect</button>
