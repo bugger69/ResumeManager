@@ -274,7 +274,7 @@ router.put("/user", isLoggedIn ,(req, res, next) => { // add checks to check the
   try {
     if (req.user) {
       const size = req.user.resumes.length;
-      const resumeData = await Resume.findById(req.user.resumes[size - 1]);
+      const resumeData = await Resume.findById(req.user.resumes[0]);
       console.log(req.user);
       console.log(resumeData);
       const fileId = resumeData.fileId;

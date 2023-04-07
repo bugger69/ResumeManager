@@ -1,5 +1,6 @@
 const express = require("express");
 const b2 = require("../config/backblazeb2");
+const JSZip = require("jszip");
 
 const router = express.Router();
 
@@ -13,6 +14,7 @@ const {
 const Company = require("../models/company");
 const Intern = require("../models/internship");
 const Resume = require("../models/resume");
+const User = require("../models/user");
 
 async function GetBucket() {
   try {
@@ -128,7 +130,7 @@ router.post("/:internId", isLoggedIn, async (req, res, next) => {
     console.log(response);
 
    
-    res.status(200).send({data: "application successfull"});
+    res.status(200).send({msg: "application successfull"});
   } catch (e) {
     console.log(e);
     res.status(400).send({ msg: "An error occured" });
@@ -137,9 +139,69 @@ router.post("/:internId", isLoggedIn, async (req, res, next) => {
 
 // get applications (recruiter only)
 
-router.get("/applications/:internId", isLoggedIn, (req, res, next) => {
+router.get("/applications/:internId", isLoggedIn, async (req, res, next) => { // needs a ton of fixing
   try {
-    res.status(200).send("hit the route");
+    const internId = req.params.internId;
+    const intern = await Intern.findById(internId);
+    console.log(intern);
+    if (!intern) {
+      throw new Error("No intern found");
+    }
+    // await intern.populate("applications.Resume");
+    // await intern.populate("applicatons.User");
+    const zip = new JSZip();
+    for (let application of intern.applications) {
+      if (application) {
+        const stud = application.Resume;
+        const stud1 = application.User;
+       
+        const resumeId = application.Resume.toString();
+        const userId = application.User.toString();
+
+        const user = await User.findById(userId);
+        const resume = await Resume.findById(resumeId);
+
+        console.log(user);
+
+        const fileName = resume.fileName;
+        const bucket = await GetBucket();
+        console.log(bucket);
+        // console.log(bucket);
+        const bucketId = bucket.buckets[0].bucketId;
+        // const bucketName = bucket.buckets[0].bucketName;
+
+        let fileId = resume.fileId;
+        // const fileInfo = await b2.getFileInfo({ fileId });
+
+        // const { data: { buckets } } = await b2.listBuckets();
+        // const buck = buckets.find(bucket => bucket.bucketId === bucketId);
+        // const bucketName = buck.bucketName;
+
+        const auth = await b2.getDownloadAuthorization({
+          bucketId: bucketId,
+          fileNamePrefix: "",
+          validDurationInSeconds: 300000, // a number from 0 to 604800
+          // ...common arguments (optional)
+        });
+        // console.log(fileInfo);
+        // console.log(auth);
+
+        // const downloadUrl = `https://f${bucketName}.backblazeb2.com/file/${bucketName}/${fileName}?Authorization=${auth.data.authorizationToken}`;
+        const file = await b2.downloadFileById({
+          fileId: fileId,
+          responseType: "json",
+          onDownloadProgress: (event) => {},
+        });
+        // console.log(downloadUrl);
+        // allResumes.push(downloadUrl);
+        // console.log(fileName);
+        zip.file(fileName, file.data );
+        zip.file(`${user.username}.pdf`, JSON.stringify(user));
+      }
+    }
+
+    const zipData = await zip.generateAsync({ type: 'nodebuffer' });
+    res.status(200).send(zipData);
   } catch (e) {
     console.log(e);
     res.status(400).send({ msg: "An error occured" });
