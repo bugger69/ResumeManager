@@ -8,7 +8,7 @@ const internSchema = mongoose.Schema({
     description: String,
     start_date: Date,
     end_date: Date,
-    Requirements: String,
+    requirements: String,
     stipend: Number,
     compensation: String,
     application_deadline: Date,
@@ -17,8 +17,15 @@ const internSchema = mongoose.Schema({
     eligiblity_for_FE: String,
     applications: [
         {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'resume'
+            Resume: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'resume'
+            },
+            User: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'user'
+            }
+
         }
       ]
     // need to add way more specific data types here.

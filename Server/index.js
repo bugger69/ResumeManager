@@ -15,6 +15,7 @@ const swaggerUi = require("swagger-ui-express");
 const uploadRoutes = require("./routes/uploadRoutes");
 const userRoutes = require("./routes/userRoutes");
 const batchRoutes = require("./routes/batchRoutes");
+const internRoutes = require("./routes/internRoutes");
 const specs = require("./config/swaggerJson");
 
 const User = require("./models/user");
@@ -114,6 +115,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use("/api", userRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/batch", batchRoutes);
+app.use("/api/intern", internRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
