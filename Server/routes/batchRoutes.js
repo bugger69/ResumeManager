@@ -109,7 +109,7 @@ router.post("/", isLoggedIn, async (req, res, next) => {
 
 /**
  * @swagger
- * /api/batch/resumes :
+ * /api/batch/resumes/:batchId :
  *    get:
  *        tags:
  *            - batchRoutes
@@ -178,21 +178,9 @@ router.get("/resumes/:batchId", isLoggedIn, async (req, res, next) => {
 
     const zipData = await zip.generateAsync({ type: 'nodebuffer' });
 
-    // for (let i = 0; i < allResumes.length; i++) {
-    //   const resume = allResumes[i];
-    //   const name = `resume${i + 1}.pdf`;
-    //   zip.file(name, resume);
-    // }
-    // const buffer = await zip.generateAsync({ type: "nodebuffer" });
-    // res.set({
-    //   "Content-Type": "application/zip",
-    //   "Content-Disposition": "attachment; filename=resumes.zip",
-    // });
+    
     res.status(200).send(zipData);
-    // for(let resume of allResumes) {
-    //   res.status(200).sendFile(resume.path, resume.name);
-    // }
-    // how do you get all the resumes again, the links or what????
+   
   } catch (e) {
     console.log(e);
     res.status(400).send({ msg: "An error occured" });

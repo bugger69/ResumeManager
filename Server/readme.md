@@ -2,7 +2,6 @@
 
 Database design:
 
-
 Users: email, name, password, date_of_birth, address (permanent and current), designation (student, tpr, prof, company-representative), Branch, Year, Course(btech, mtech or phd), resume(s)
 
 resume: fileId, fileName

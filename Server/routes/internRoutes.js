@@ -30,6 +30,46 @@ async function GetBucket() {
 
 // create Intern
 
+/**
+ * @swagger
+ * /api/intern :
+ *    post:
+ *        tags:
+ *            - internRoutes
+ *        summary: Used to create a intern.
+ *        description: Can be used to create a new intern by the recruiter.
+ *        basePath: /api/v1
+ *        requestBody:
+ *          required: true
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  companyName:
+ *                    type: string
+ *                  description:
+ *                    type: string
+ *                  startDate:
+ *                    type: Date
+ *                  endDate:
+ *                    type: Date
+ *                  requirements:
+ *                    type: string
+ *                  stipend:
+ *                    type: number
+ *                  compensation:
+ *                    type: number
+ *                  applicationDeadline:
+ *                    type: Date
+ *                  supervisionMentorship:
+ *                    type: string
+ *                  hiringInfo:
+ *                    type: string
+ *                  eligibility:
+ *                    type: string
+ */
+
 router.post("/", isLoggedIn, async (req, res, next) => {
   try {
     const {
@@ -74,6 +114,17 @@ router.post("/", isLoggedIn, async (req, res, next) => {
 
 // get Intern details
 
+/**
+ * @swagger
+ * /api/intern/:internId :
+ *    get:
+ *        tags:
+ *            - internRoutes
+ *        summary: Used to get the data for the intern.
+ *        description: sends back all the details about the intern to be rendered.
+ *        basePath: /api/v1
+ */
+
 router.get("/:internId", isLoggedIn, async (req, res, next) => {
   try {
     const internId = req.params.internId;
@@ -91,6 +142,17 @@ router.get("/:internId", isLoggedIn, async (req, res, next) => {
 
 // send all interns
 
+/**
+ * @swagger
+ * /api/intern :
+ *    get:
+ *        tags:
+ *            - internRoutes
+ *        summary: Used to recieve all interns.
+ *        description: Is used to get all interns in the database.
+ *        basePath: /api/v1
+ */
+
 router.get("/", isLoggedIn, async (req, res, next) => {
   try {
     const interns = await Intern.find({});
@@ -106,6 +168,17 @@ router.get("/", isLoggedIn, async (req, res, next) => {
 });
 
 // apply for intern
+
+/**
+ * @swagger
+ * /api/intern/:internId :
+ *    post:
+ *        tags:
+ *            - internRoutes
+ *        summary: Used to apply for a intern.
+ *        description: Sends the user resume and data to the recruiter.
+ *        basePath: /api/v1
+ */
 
 router.post("/:internId", isLoggedIn, async (req, res, next) => {
   try {
@@ -137,6 +210,17 @@ router.post("/:internId", isLoggedIn, async (req, res, next) => {
 });
 
 // get applications (recruiter only)
+
+/**
+ * @swagger
+ * /api/intern/applications/:internId :
+ *    post:
+ *        tags:
+ *            - internRoutes
+ *        summary: Used by the recruiter to get all the applications for the intern.
+ *        description: All the applied the user's resume and data can be requested by the recruiter.
+ *        basePath: /api/v1
+ */
 
 router.get("/applications/:internId", isLoggedIn, async (req, res, next) => {
   // needs a ton of fixing
