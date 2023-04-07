@@ -75,9 +75,14 @@ router.get("/:internId", isLoggedIn, async (req, res, next) => {
 
 // send all interns
 
-router.get("/", isLoggedIn, (req, res, next) => {
+router.get("/", isLoggedIn, async (req, res, next) => {
   try {
-    res.status(200).send("hit the route");
+    const interns = await Intern.find({});
+    console.log(interns);
+    if(!interns) {
+        throw new Error("No intern found");
+    }
+    res.status(200).send(interns);
   } catch (e) {
     console.log(e);
     res.status(400).send({ msg: "An error occured" });
