@@ -270,7 +270,7 @@ router.put("/user", isLoggedIn ,(req, res, next) => { // add checks to check the
  *        description: Only works if the user is logged in.
  */
 
- router.get("/user/resume", isLoggedIn, async (req, res, next) => {
+ router.get("/user/resume", isLoggedIn, async (req, res, next) => { // check if you're getting the oldest resume or the latest one
   try {
     if (req.user) {
       const size = req.user.resumes.length;
