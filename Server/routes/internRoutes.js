@@ -58,9 +58,15 @@ router.post("/", isLoggedIn, async (req, res, next) => {
 
 // get Intern details
 
-router.get("/:internId", isLoggedIn, (req, res, next) => {
+router.get("/:internId", isLoggedIn, async (req, res, next) => {
   try {
-    res.status(200).send("hit the route");
+    const internId = req.params.internId;
+    const intern = await Intern.findById(internId);
+    console.log(intern);
+    if(!intern) {
+        throw new Error("No intern found");
+    }
+    res.status(200).send(intern);
   } catch (e) {
     console.log(e);
     res.status(400).send({ msg: "An error occured" });
