@@ -14,7 +14,13 @@ const internSchema = mongoose.Schema({
     application_deadline: Date,
     supervision_mentorship: String,
     hiring_info: String,
-    eligiblity_for_FE: String
+    eligiblity_for_FE: String,
+    applications: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'resume'
+        }
+      ]
     // need to add way more specific data types here.
 });
 

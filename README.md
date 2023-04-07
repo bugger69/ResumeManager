@@ -6,14 +6,11 @@ Note: Homepage is broken, and the failed login needs work, but other than that, 
 
 Continue with the Homepage @anubhav
 
-
 -> Focus only on the student and tpr view at the moment.
 
 -> Make sure it leads to all required places(check the use cases in srs)
 
-
 Fix the navbar @manthan
-
 
 -> FIX THE CSS OF THE NAVBAR AT LEAST.
 
@@ -22,10 +19,6 @@ Fix the navbar @manthan
 To start the application, run the following
 
 git pull
-
-if you haven't yet cloned the repository, run
-
-git clone <insert-repo-link-here>
 
 if you haven't yet cloned the repository, run
 

@@ -29,6 +29,17 @@ async function GetBucket() {
 
 // route to get batch id
 
+/**
+ * @swagger
+ * /api/batch :
+ *    get:
+ *        tags:
+ *            - batchRoutes
+ *        summary: Gets the batch data.
+ *        description: Sends the ids of all the students in the batch.
+ *        basePath: /api/v1
+ */
+
 router.get("/", isLoggedIn, async (req, res, next) => {
   try {
     const tprId = req.user._id;
@@ -43,6 +54,32 @@ router.get("/", isLoggedIn, async (req, res, next) => {
 
 
 // create a batch
+
+/**
+ * @swagger
+ * /api/batch :
+ *    post:
+ *        tags:
+ *            - batchRoutes
+ *        summary: Used to create the batch.
+ *        description: Can be used to create a new batch by the admin or an institute representative.
+ *        basePath: /api/v1
+ *        requestBody:
+ *          required: true
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  branchName:
+ *                    type: string
+ *                  year:
+ *                    type: number
+ *                  passOut:
+ *                    type: number
+ *                  tprId:
+ *                    type: string
+ */
 
 router.post("/", isLoggedIn, async (req, res, next) => {
   try {
@@ -69,6 +106,17 @@ router.post("/", isLoggedIn, async (req, res, next) => {
 
 // ohkay so here are the final steps
 // get the array buffer as you were including filenames, create a archive and append all files using loop, do the honours then.
+
+/**
+ * @swagger
+ * /api/batch/resumes :
+ *    get:
+ *        tags:
+ *            - batchRoutes
+ *        summary: Sends all the resumes of the batch.
+ *        description: .
+ *        basePath: /api/v1
+ */
 
 router.get("/resumes/:batchId", isLoggedIn, async (req, res, next) => {
   // add a check for if the current user is  the tpr of the requested batch.
