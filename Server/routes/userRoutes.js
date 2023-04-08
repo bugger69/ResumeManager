@@ -185,22 +185,27 @@ router.get("/logout", (req, res, next) => {
  */
 
 router.get("/user", isLoggedIn, (req, res, next) => {
-  if (req.user) {
-    const userData = {
-      id: req.user._id,
-      name: req.user.name,
-      username: req.user.username,
-      email: req.user.email,
-      permanent_address: req.user.permanent_address,
-      current_address: req.user.current_address,
-      designation: req.user.designation,
-      branch: req.user.branch,
-      year: req.user.year,
-      course: req.user.course,
-    };
-    res.status(200).send(userData);
-  } else {
-    throw new Error("User Not Found.");
+  try {
+    if (req.user) {
+      const userData = {
+        id: req.user._id,
+        name: req.user.name,
+        username: req.user.username,
+        email: req.user.email,
+        permanent_address: req.user.permanent_address,
+        current_address: req.user.current_address,
+        designation: req.user.designation,
+        branch: req.user.branch,
+        year: req.user.year,
+        course: req.user.course,
+      };
+      res.status(200).send(userData);
+    } else {
+      throw new Error("User Not Found.");
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(400).send({msg: "An error occured"});
   }
 });
 
@@ -236,25 +241,36 @@ router.get("/user", isLoggedIn, (req, res, next) => {
  *                    type: string
  */
 
-router.put("/user", isLoggedIn ,(req, res, next) => { // add checks to check the presence of every field, turn this into a try-catch.
-  if(req.user) {
-    const id = req.user.id;
-    const userData = {
-      username: req.body.username,
-      email: req.body.email,
-      date_of_birth: req.body.dob,
-      permanent_address: req.body.permanent_address,
-      current_address: req.body.current_address,
-      branch: req.body.branch,
-      year: req.body.year,
-      course: req.body.course,
-    };
-    User.findByIdAndUpdate(id, userData).then((resp) => {
-      console.log(resp);
+router.put("/user", isLoggedIn , async (req, res, next) => { // add checks to check the presence of every field, turn this into a try-catch.
+  try {
+    if(req.user) {
+      const id = req.user.id;
+      const {username, email, dob, permanent_address, current_address, branch, year, course} = req.body;
+      // const userData = {
+      //   username: req.body.username,
+      //   email: req.body.email,
+      //   date_of_birth: req.body.dob,
+      //   permanent_address: req.body.permanent_address,
+      //   current_address: req.body.current_address,
+      //   branch: req.body.branch,
+      //   year: req.body.year,
+      //   course: req.body.course,
+      // };
+      const userData = {};
+      if(username) userData.username = username;
+      if(email) userData.email = email;
+      if(dob) userData.date_of_birth = dob;
+      if(permanent_address) userData.permanent_address = permanent_address;
+      if(current_address) userData.current_address = current_address;
+      if(branch) userData.branch = branch;
+      if(year) userData.year = year;
+      if(course) userData.course = course;
+      const response = await User.findByIdAndUpdate(id, userData);
       res.status(200).send({status: "user updated"});
-    }).catch((e) => {
-      console.log(e);
-    })
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(400).send({msg: "An error occured"});
   }
 });
 
