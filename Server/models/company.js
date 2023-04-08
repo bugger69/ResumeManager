@@ -4,7 +4,7 @@ const companySchema = mongoose.Schema({
   companyName: String,
   field: String, // change to enum later
   location: String,
-  size: String,
+  scale: String,
   description: String
 });
 

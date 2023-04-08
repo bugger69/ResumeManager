@@ -16,6 +16,7 @@ const uploadRoutes = require("./routes/uploadRoutes");
 const userRoutes = require("./routes/userRoutes");
 const batchRoutes = require("./routes/batchRoutes");
 const internRoutes = require("./routes/internRoutes");
+const companyRoutes = require("./routes/companyRoutes");
 const specs = require("./config/swaggerJson");
 
 const User = require("./models/user");
@@ -116,6 +117,7 @@ app.use("/api", userRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/batch", batchRoutes);
 app.use("/api/intern", internRoutes);
+app.use("/api/company", companyRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
