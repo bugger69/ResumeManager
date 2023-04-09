@@ -7,9 +7,37 @@ const { isAdmin } = require("../middleware/authorization");
 
 const Company = require("../models/company");
 
-// all these routes should later be admin exclusive except the get one
+// all these routes should later be admin exclusive except the get ones
 
 // register a company
+
+/**
+ * @swagger
+ * /api/company :
+ *    post:
+ *        tags:
+ *            - companyRoutes
+ *        summary: Used register a company.
+ *        description: Exclusive to the admin atm.
+ *        basePath: /api/v1
+ *        requestBody:
+ *          required: true
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  companyName:
+ *                    type: string
+ *                  field:
+ *                    type: string
+ *                  location:
+ *                    type: string
+ *                  scale:
+ *                    type: string
+ *                  description:
+ *                    type: string
+ */
 
 router.post("/", isLoggedIn, async (req, res, next) => {
   try {
@@ -27,6 +55,17 @@ router.post("/", isLoggedIn, async (req, res, next) => {
 
 // get single company data
 
+/**
+ * @swagger
+ * /api/company :
+ *    get:
+ *        tags:
+ *            - companyRoutes
+ *        summary: Used to get a company's data.
+ *        description: Exclusive to the admin atm.
+ *        basePath: /api/v1
+ */
+
 router.get("/:companyId", isLoggedIn, async (req, res, next) => {
   try {
     const companyId = req.params.companyId;
@@ -40,6 +79,17 @@ router.get("/:companyId", isLoggedIn, async (req, res, next) => {
 
 // get all the companies data
 
+/**
+ * @swagger
+ * /api/company/:companyId :
+ *    get:
+ *        tags:
+ *            - companyRoutes
+ *        summary: Used to get all the companies's data.
+ *        description: Exclusive to the admin atm.
+ *        basePath: /api/v1
+ */
+
 router.get("/", isLoggedIn, async (req, res, next) => {
   try {
     const companies = await Company.find({});
@@ -51,6 +101,34 @@ router.get("/", isLoggedIn, async (req, res, next) => {
 });
 
 // edit company data
+
+/**
+ * @swagger
+ * /api/company/:companyId :
+ *    put:
+ *        tags:
+ *            - companyRoutes
+ *        summary: Used to update a company's data.
+ *        description: Exclusive to the admin atm.
+ *        basePath: /api/v1
+ *        requestBody:
+ *          required: true
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  companyName:
+ *                    type: string
+ *                  field:
+ *                    type: string
+ *                  location:
+ *                    type: string
+ *                  scale:
+ *                    type: string
+ *                  description:
+ *                    type: string
+ */
 
 router.put("/:companyId", isLoggedIn, async (req, res, next) => {
   try {
@@ -66,6 +144,17 @@ router.put("/:companyId", isLoggedIn, async (req, res, next) => {
 });
 
 // unregister the company
+
+/**
+ * @swagger
+ * /api/company/:companyId :
+ *    delete:
+ *        tags:
+ *            - companyRoutes
+ *        summary: Used to unregister/delete a company.
+ *        description: Exclusive to the admin atm.
+ *        basePath: /api/v1
+ */
 
 router.delete("/:companyId", isLoggedIn, async (req, res, next) => {
   try {

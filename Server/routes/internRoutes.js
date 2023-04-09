@@ -209,6 +209,10 @@ router.post("/:internId", isLoggedIn, async (req, res, next) => {
   }
 });
 
+// route to edit intern
+
+// router.put("/:internId", isLoggedIn, (req, res, next) => {});
+
 // get applications (recruiter only)
 
 /**
