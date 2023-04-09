@@ -87,7 +87,7 @@ const EditForm = () => {
 
   
   return (
-    <div className="cont">
+    <div className="cont" >
       <form className="input" onSubmit={onSubmit}>
         <label className="label" htmlFor="username">
           Username:

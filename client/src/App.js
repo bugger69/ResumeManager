@@ -13,6 +13,7 @@ import UserPage from './components/UserPage';
 import AllInterns from './components/allInterns'
 
 import 'bootstrap/dist/css/bootstrap.min.css' ;
+import InternPage from './components/internpage';
 
 function App(props) {
   let routes = useRoutes([
@@ -22,7 +23,8 @@ function App(props) {
     {path: "/register", element: <Register/>},
     {path: "/editinfo", element: <EditForm /> },
     {path: "/userpage", element: <UserPage/>},
-    {path: "/allinterns", element: <AllInterns />}
+    {path: "/allinterns", element: <AllInterns />},
+    {path: "/intern/:internId", element: <InternPage />}
   ]);
 
   return (
