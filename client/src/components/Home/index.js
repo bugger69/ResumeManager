@@ -31,12 +31,14 @@ const Home = (props) => {
         console.log(err);
       });
   }, [setData]);
+  console.log(data);
+  console.log(data.designation === "comp_representative");
   return (
     <React.Fragment>
-      <Navbar />
+    <Navbar />
       {data.designation === "student" && <Studentview />}
       {data.designation === "tpr" && <Tprview />}
-      {data.designation === "recruiter" && <Recruiterview />}
+      {data.designation === "comp_representative" && <Recruiterview />}
     </React.Fragment>
   );
 };

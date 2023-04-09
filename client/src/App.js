@@ -10,6 +10,7 @@ import Register from './components/Register';
 import Home from './components/Home';
 import EditForm from './components/EditForm';
 import UserPage from './components/UserPage';
+import AllInterns from './components/allInterns'
 
 import 'bootstrap/dist/css/bootstrap.min.css' ;
 
@@ -21,6 +22,7 @@ function App(props) {
     {path: "/register", element: <Register/>},
     {path: "/editinfo", element: <EditForm /> },
     {path: "/userpage", element: <UserPage/>},
+    {path: "/allinterns", element: <AllInterns />}
   ]);
 
   return (

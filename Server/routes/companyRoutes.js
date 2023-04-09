@@ -16,6 +16,7 @@ router.post("/", isLoggedIn, async (req, res, next) => {
     const {companyName, field, location, scale, description} = req.body; // scale : startup and all
     const obj = {companyName: companyName, field: field, location: location, scale: scale, description: description};
     const company = new Company(obj);
+    console.log(company);
     const response = await company.save();
     res.status(200).send({msg: "Company registered"});
   } catch (e) {
