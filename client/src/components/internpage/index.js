@@ -45,6 +45,7 @@ const InternPage = () => {
   }
 
   return <React.Fragment>
+    <Navbar />
   <h1>description:{Data.description}</h1>
   <h1>start date:{Data.start_date}</h1>
   <h1>stipend:{Data.stipend}</h1>
