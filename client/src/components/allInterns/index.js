@@ -8,11 +8,10 @@ const Allinterns = () => {
  useEffect(()=>{
   axios.get("http://localhost:4000/api/intern" ,{withCredentials : true}).then((res)=> {
     setData(res.data)
-    console.log(data);
   }).catch((e)=>{
     console.log(e);
   })
- },[])
+ },[setData])
  const address = "http://localhost:3000/intern/";
   return <React.Fragment>
   <Navbar/>

@@ -87,9 +87,10 @@ router.post("/", isLoggedIn, async (req, res, next) => {
     } = req.body;
     const companyData = await Company.find({ companyName: companyName });
     console.log(companyData);
-    const companyId = companyData[0].companyId;
+    const companyId = companyData[0]._id;
+    console.log(companyId);
     const internData = {
-      companyId: companyId,
+      companyID: companyData[0]._id,
       description: description,
       start_date: startDate,
       end_date: endDate,
@@ -267,9 +268,9 @@ router.get("/applications/:internId", isLoggedIn, async (req, res, next) => {
           responseType: "json",
           onDownloadProgress: (event) => {},
         });
-
+        console.log(fileName);
         zip.file(fileName, file.data);
-        zip.file(`${user.username}.pdf`, JSON.stringify(user));
+        zip.file(`${user.username}.txt`, JSON.stringify(user));
       }
     }
 

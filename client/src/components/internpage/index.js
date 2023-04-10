@@ -19,7 +19,30 @@ const InternPage = () => {
       .catch(function (e) {
         console.log(e);
       });
-  }, []);
+  }, [internId]);
+
+  const obj = {msg: "application"};
+
+  const applyForIntern = () => {
+    axios.post(`http://localhost:4000/api/intern/${internId}`, obj, {withCredentials: true}).then((res => {
+      console.log(res);
+      alert("applied for intern!");
+    })).catch(e => {
+      alert("An error occured in the application");
+      console.log(e);
+    })
+  }
+
+  const getAllInterns = () => {
+    axios.get(`http://localhost:4000/api/intern/applications/${internId}`, { responseType: "blob", withCredentials: true }).then(res => {
+      const zipBlob = new Blob([res.data], { type: "application/zip" });
+      const zipUrl = URL.createObjectURL(zipBlob);
+      window.location.href = zipUrl;
+    }).catch (e => {
+      console.log(e);
+      alert("An error occured while fetching");
+    })
+  }
 
   return <React.Fragment>
   <h1>description:{Data.description}</h1>
@@ -29,6 +52,8 @@ const InternPage = () => {
   <h1>Application Deadline:{Data.application_deadline}</h1>
   <h1>supervision Mentorship:{Data.supervision_mentorship}</h1>
   <h1>Eligibility:{Data.eligiblity_for_FE}</h1>
+  <button onClick={applyForIntern}>Apply</button>
+  <button onClick={getAllInterns}>Get All applications</button>
 
   </React.Fragment>;
 };
