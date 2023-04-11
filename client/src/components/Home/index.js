@@ -10,12 +10,6 @@ import AuthContext from "../store/auth-context";
 
 const Home = (props) => {
   const ctx = useContext(AuthContext);
-
-  console.log(ctx.isLoggedIn);
-  console.log(localStorage.getItem('isLoggedIn'));
-  if(!ctx.isLoggedIn && localStorage.getItem('isLoggedIn')) {
-      window.location.href = '/login';
-  }
   const [data, setData] = useState({});
   useEffect(() => {
     axios
@@ -23,16 +17,23 @@ const Home = (props) => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setData(res.data);
+        // console.log(ctx.isLoggedIn);
+        // console.log(localStorage.getItem('isLoggedIn'));
+        // console.log(!ctx.isLoggedIn&& localStorage.getItem('isLoggedIn'));
+        if(!ctx.isLoggedIn && localStorage.getItem('isLoggedIn')) {
+          console.log("here", !ctx.isLoggedIn);
+          window.location.href = '/login';
+      }
         //   window.location.href = "/";
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [setData]);
-  console.log(data);
-  console.log(data.designation === "comp_representative");
+  }, [setData, ctx]);
+  // console.log(data);
+  // console.log(data.designation === "comp_representative");
   return (
     <React.Fragment>
     <Navbar />

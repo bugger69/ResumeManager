@@ -12,7 +12,8 @@ import EditForm from './components/EditForm';
 import UserPage from './components/UserPage';
 import AllInterns from './components/allInterns'
 
-import 'bootstrap/dist/css/bootstrap.min.css' ;
+// import 'bootstrap/dist/css/bootstrap.min.css' ;
+import 'bulma/css/bulma.min.css';
 import InternPage from './components/internpage';
 
 function App(props) {

@@ -45,7 +45,7 @@ const Register = () => {
   return (<>
   <Navbar />
     <div className="cont">
-      <form className="input" onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <label className="label" htmlFor="username">
           Username:
         </label>

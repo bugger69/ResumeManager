@@ -2,11 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { CSSTransition } from "react-transition-group";
 import axios from "axios";
 
+import  {Navbar, Button} from "react-bulma-components";
 import AuthContext from "../store/auth-context";
 
-import "./navbar.css";
+// import "./navbar.css";
+import 'bulma/css/bulma.min.css';
 
-function Navbar() {
+function Nav() {
   const [isNavVisible, setNavVisibility] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -35,7 +37,7 @@ function Navbar() {
   };
 
   const onSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     axios
       .get("http://localhost:4000/api/logout", {
         withCredentials: true,
@@ -54,27 +56,41 @@ function Navbar() {
   };
 
   return (
-    <header className="Header">
-      {/* <img src={require("../assets/logo.png")} className="Logo" alt="logo" /> */}
-      <CSSTransition
-        in={!isSmallScreen || isNavVisible}
-        classNames="NavAnimation"
-        unmountOnExit
-      >
-        <nav className="Nav">
-          <a href="/">Home</a>
-          <a href="/userpage">User Page</a>
-          <a href="/upload">Upload</a>
-          <a href="/login">Login</a>
-          <a href="/register">Register</a>
-          <button onClick={onSubmit}>Logout</button>
-        </nav>
-      </CSSTransition>
-      <button onClick={toggleNav} className="Burger">
-        🍔
-      </button>
-    </header>
+    <Navbar>
+        <Navbar.Brand>NITH</Navbar.Brand>
+        <Navbar.Item href="/">Homepage</Navbar.Item>
+        <Navbar.Item href="/upload">UploadPDF</Navbar.Item>
+        <Navbar.Item href="/allinters">Check Internships</Navbar.Item>
+        {!ctx.isLoggedIn?<Navbar.Item href="/login">Login</Navbar.Item>:<React.Fragment></React.Fragment>}
+        {!ctx.isLoggedIn?<Navbar.Item href="/register">Register</Navbar.Item>:<React.Fragment></React.Fragment>}
+        {ctx.isLoggedIn?<Button backgroundColor="danger" onClick={onSubmit}>Logout</Button>: <React.Fragment></React.Fragment>}
+
+
+    </Navbar>
   );
+
+  // return (
+  //   <header className="Header">
+  //     {/* <img src={require("../assets/logo.png")} className="Logo" alt="logo" /> */}
+  //     <CSSTransition
+  //       in={!isSmallScreen || isNavVisible}
+  //       classNames="NavAnimation"
+  //       unmountOnExit
+  //     >
+  //       <nav className="Nav">
+  //         <a href="/">Home</a>
+  //         <a href="/userpage">User Page</a>
+  //         <a href="/upload">Upload</a>
+  //         <a href="/login">Login</a>
+  //         <a href="/register">Register</a>
+  //         <button onClick={onSubmit}>Logout</button>
+  //       </nav>
+  //     </CSSTransition>
+  //     <button onClick={toggleNav} className="Burger">
+  //       🍔
+  //     </button>
+  //   </header>
+  // );
 }
 
 // return (
@@ -159,4 +175,4 @@ function Navbar() {
 //   </Fragment>
 // );
 
-export default Navbar;
+export default Nav;

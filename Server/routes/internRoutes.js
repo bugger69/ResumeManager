@@ -269,8 +269,8 @@ router.get("/applications/:internId", isLoggedIn, async (req, res, next) => {
           onDownloadProgress: (event) => {},
         });
         console.log(fileName);
-        zip.file(fileName, file.data);
-        zip.file(`${user.username}.txt`, JSON.stringify(user));
+        zip.folder(`${user.username}`).file(fileName, file.data);
+        zip.folder(`${user.username}`).file(`${user.username}.txt`, JSON.stringify(user));
       }
     }
 

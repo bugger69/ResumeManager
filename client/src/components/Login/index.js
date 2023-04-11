@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 
 import Navbar from "../Navbar";
 import AuthContext from "../store/auth-context";
+import { Form, Button, Icon } from "react-bulma-components";
 
 import "./login.css";
 
@@ -15,13 +16,13 @@ const Login = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     const obj = { username: username, password: password };
-    
+
     axios
       .post("http://localhost:4000/api/login", obj, {
-        withCredentials: true
+        withCredentials: true,
       })
       .then((res) => {
-        if(res.status === 200) {
+        if (res.status === 200) {
           authCtx.onLogin();
           alert("Logged in!!!");
           window.location.href = "/";
@@ -32,29 +33,67 @@ const Login = (props) => {
         console.log(e);
       });
   };
-  return (<>
-    <Navbar />
-    <div className="cont">
-      <form className="input" onSubmit={onSubmit}>
-        <label className="label" htmlFor="username">Username:</label>
-        <input
-          className="input"
-          type="text"
-          id="username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <label className="label" htmlFor="password">Password:</label>
-        <input
-          className="input"
-          type="password"
-          id="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button className="button" type="submit" value="submit">
-          Submit
-        </button>
-      </form>
-    </div>
+  return (
+    <>
+      <Navbar />
+      <div className="cont">
+        <form onSubmit={onSubmit} className="ml-2">
+          <Form.Field>
+            <Form.Label>Username:</Form.Label>
+            <Form.Control>
+              <Form.Input
+                color="success"
+                value={username}
+                onChange={(e) => {
+                  return setUsername(e.target.value);
+                }}
+              />
+              <Icon align="left" size="small">
+                <i className="fas fa-user" />
+              </Icon>
+              <Icon align="right" size="small">
+                <i className="fas fa-check" />
+              </Icon>
+            </Form.Control>
+            <Form.Help color="success">This username is available</Form.Help>
+          </Form.Field>
+
+          <Form.Field>
+            <Form.Label>Password:</Form.Label>
+            <Form.Control>
+              <Form.Input
+                color="danger"
+                value={password}
+                onChange={(e) => {
+                  return setPassword(e.target.value);
+                }}
+              />
+              {/* <Icon align="left" size="small">
+                <i className="fas fa-envelope" />
+              </Icon>
+              <Icon align="right" size="small">
+                <i className="fas fa-exclamation-triangle" />
+              </Icon> */}
+            </Form.Control>
+          </Form.Field>
+
+          {/* <Form.Label>Username:</Form.Label>
+          <Form.Input
+            id="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Form.Label>Password:</Form.Label>
+          <Form.Input
+            id="password"
+            onChange={(e) => setPassword(e.target.value)}
+          /> */}
+          <Form.Field>
+          <Button backgroundColor="primary" type="submit" value="submit">
+            Submit
+          </Button>
+          </Form.Field>
+        </form>
+      </div>
     </>
   );
 };
