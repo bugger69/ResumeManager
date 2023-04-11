@@ -74,14 +74,14 @@ function Nav() {
           <Navbar.Item href="/upload">UploadPDF</Navbar.Item>
           <Navbar.Item href="/allinterns">Check Internships</Navbar.Item>
         </Navbar.Container>
-        <Navbar.Container align="end" className="is-vcentered mt-auto">
+        <Navbar.Container align="end" className="is-vcentered mt-auto mb-auto">
           {!ctx.isLoggedIn ? (
             <Navbar.Item href="/login" className="has-text-white">Login</Navbar.Item>
           ) : (
             <React.Fragment></React.Fragment>
           )}
         </Navbar.Container>
-        <Navbar.Container align="end">
+        <Navbar.Container align="end" className="is-vcentered mt-auto mb-auto">
           {!ctx.isLoggedIn ? (
             <Navbar.Item href="/register" className="has-text-white mt-auto">Register</Navbar.Item>
           ) : (
