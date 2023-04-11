@@ -7,15 +7,15 @@ import { Card, Button } from "react-bulma-components";
 
 const InternPage = () => {
   const { internId } = useParams();
-  const [Data, setdata] = useState([]);
+  const [Data, setData] = useState({companyID: {}});
   useEffect(() => {
     axios
       .get(`http://localhost:4000/api/intern/${internId}`, {
         withCredentials: true,
       })
       .then(function (res) {
-        console.log(res);
-        setdata(res.data);
+        console.log(res.data);
+        setData(res.data);
       })
       .catch(function (e) {
         console.log(e);
@@ -87,10 +87,10 @@ const InternPage = () => {
         </Card.Content>
         <Card.Footer>
           <Card.Footer.Item>
-            <button onClick={applyForIntern}>Apply</button>
+            <Button onClick={applyForIntern}>Apply</Button>
           </Card.Footer.Item>
           <Card.Footer.Item>
-            <button onClick={getAllInterns}>Get All applications</button>
+            <Button onClick={getAllInterns}>Get All applications</Button>
           </Card.Footer.Item>
         </Card.Footer>
       </Card>
