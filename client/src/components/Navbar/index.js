@@ -6,7 +6,6 @@ import  {Navbar, Button} from "react-bulma-components";
 import AuthContext from "../store/auth-context";
 
 // import "./navbar.css";
-import 'bulma/css/bulma.min.css';
 
 function Nav() {
   const [isNavVisible, setNavVisibility] = useState(false);
@@ -56,8 +55,8 @@ function Nav() {
   };
 
   return (
-    <Navbar>
-        <Navbar.Brand>NITH</Navbar.Brand>
+    <Navbar className="is-justify-content-space-evenly">
+        <Navbar.Brand className="mt-auto">NITH</Navbar.Brand>
         <Navbar.Item href="/">Homepage</Navbar.Item>
         <Navbar.Item href="/upload">UploadPDF</Navbar.Item>
         <Navbar.Item href="/allinters">Check Internships</Navbar.Item>

@@ -37,10 +37,10 @@ const Login = (props) => {
     <>
       <Navbar />
       <div className="cont">
-        <form onSubmit={onSubmit} className="ml-2">
+        <form onSubmit={onSubmit} className="ml-2 mt-2 mr-2">
           <Form.Field>
             <Form.Label>Username:</Form.Label>
-            <Form.Control>
+            <Form.Control className="mt-2">
               <Form.Input
                 color="success"
                 value={username}
@@ -48,21 +48,21 @@ const Login = (props) => {
                   return setUsername(e.target.value);
                 }}
               />
-              <Icon align="left" size="small">
+              {/* <Icon align="left" size="small">
                 <i className="fas fa-user" />
               </Icon>
               <Icon align="right" size="small">
                 <i className="fas fa-check" />
-              </Icon>
+              </Icon> */}
             </Form.Control>
-            <Form.Help color="success">This username is available</Form.Help>
+            {/* <Form.Help color="success">This username is available</Form.Help> */}
           </Form.Field>
 
-          <Form.Field>
+          <Form.Field >
             <Form.Label>Password:</Form.Label>
-            <Form.Control>
+            <Form.Control className="mt-2">
               <Form.Input
-                color="danger"
+                color="primary"
                 value={password}
                 onChange={(e) => {
                   return setPassword(e.target.value);
@@ -88,7 +88,7 @@ const Login = (props) => {
             onChange={(e) => setPassword(e.target.value)}
           /> */}
           <Form.Field>
-          <Button backgroundColor="primary" type="submit" value="submit">
+          <Button backgroundColor="link" type="submit" value="submit" className="mb-2">
             Submit
           </Button>
           </Form.Field>
