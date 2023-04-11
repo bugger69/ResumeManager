@@ -156,7 +156,7 @@ router.get("/:internId", isLoggedIn, async (req, res, next) => {
 
 router.get("/", isLoggedIn, async (req, res, next) => {
   try {
-    const interns = await Intern.find({});
+    const interns = await Intern.find({}).populate("companyID");
     console.log(interns);
     if (!interns) {
       throw new Error("No intern found");

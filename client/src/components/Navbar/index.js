@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { CSSTransition } from "react-transition-group";
 import axios from "axios";
 
-import  {Navbar, Button} from "react-bulma-components";
+import { Navbar, Button } from "react-bulma-components";
 import AuthContext from "../store/auth-context";
 
 // import "./navbar.css";
@@ -55,41 +55,66 @@ function Nav() {
   };
 
   return (
-    <Navbar className="is-justify-content-space-evenly">
-        <Navbar.Brand className="mt-auto">NITH</Navbar.Brand>
-        <Navbar.Item href="/">Homepage</Navbar.Item>
-        <Navbar.Item href="/upload">UploadPDF</Navbar.Item>
-        <Navbar.Item href="/allinters">Check Internships</Navbar.Item>
-        {!ctx.isLoggedIn?<Navbar.Item href="/login">Login</Navbar.Item>:<React.Fragment></React.Fragment>}
-        {!ctx.isLoggedIn?<Navbar.Item href="/register">Register</Navbar.Item>:<React.Fragment></React.Fragment>}
-        {ctx.isLoggedIn?<Button backgroundColor="danger" onClick={onSubmit}>Logout</Button>: <React.Fragment></React.Fragment>}
-
-
+    <Navbar className="is-dark">
+      <Navbar.Brand>
+        <Navbar.Item href="#"> {/** Add nith logo here */ }
+          <img
+            alt="Bulma: a modern CSS framework based on Flexbox"
+            height="28"
+            src="https://bulma.io/images/bulma-logo.png"
+            width="112"
+          />
+        </Navbar.Item>
+        <Navbar.Burger />.
+      </Navbar.Brand>
+      <Navbar.Menu>
+        <Navbar.Container>
+          <Navbar.Item href="/">Homepage</Navbar.Item>
+          <Navbar.Item href="/editinfo">Change Your Info</Navbar.Item>
+          <Navbar.Item href="/upload">UploadPDF</Navbar.Item>
+          <Navbar.Item href="/allinterns">Check Internships</Navbar.Item>
+        </Navbar.Container>
+        <Navbar.Container align="end" className="is-vcentered mt-auto">
+          {!ctx.isLoggedIn ? (
+            <Navbar.Item href="/login" className="has-text-white">Login</Navbar.Item>
+          ) : (
+            <React.Fragment></React.Fragment>
+          )}
+        </Navbar.Container>
+        <Navbar.Container align="end">
+          {!ctx.isLoggedIn ? (
+            <Navbar.Item href="/register" className="has-text-white mt-auto">Register</Navbar.Item>
+          ) : (
+            <React.Fragment></React.Fragment>
+          )}
+        </Navbar.Container>
+        <Navbar.Container align="end mt-auto">
+          {ctx.isLoggedIn ? (
+            <Button backgroundColor="danger" onClick={onSubmit}>
+              Logout
+            </Button>
+          ) : (
+            <React.Fragment></React.Fragment>
+          )}
+        </Navbar.Container>
+      </Navbar.Menu>
     </Navbar>
   );
 
   // return (
-  //   <header className="Header">
-  //     {/* <img src={require("../assets/logo.png")} className="Logo" alt="logo" /> */}
-  //     <CSSTransition
-  //       in={!isSmallScreen || isNavVisible}
-  //       classNames="NavAnimation"
-  //       unmountOnExit
-  //     >
-  //       <nav className="Nav">
-  //         <a href="/">Home</a>
-  //         <a href="/userpage">User Page</a>
-  //         <a href="/upload">Upload</a>
-  //         <a href="/login">Login</a>
-  //         <a href="/register">Register</a>
-  //         <button onClick={onSubmit}>Logout</button>
-  //       </nav>
-  //     </CSSTransition>
-  //     <button onClick={toggleNav} className="Burger">
-  //       🍔
-  //     </button>
-  //   </header>
+  //   <Navbar className="is-justify-content-space-evenly mt-1">
+  //       <Navbar.Item className="has-text-weight-bold">NITH</Navbar.Item>
+  //       <Navbar.Item href="/">Homepage</Navbar.Item>
+  //       <Navbar.Item href="/upload">UploadPDF</Navbar.Item>
+  //       <Navbar.Item href="/allinterns">Check Internships</Navbar.Item>
+  //       {!ctx.isLoggedIn?<Navbar.Item href="/login">Login</Navbar.Item>:<React.Fragment></React.Fragment>}
+  //       {!ctx.isLoggedIn?<Navbar.Item href="/register">Register</Navbar.Item>:<React.Fragment></React.Fragment>}
+  //       {ctx.isLoggedIn?<Button backgroundColor="danger" onClick={onSubmit}>Logout</Button>: <React.Fragment></React.Fragment>}
+
+  //   </Navbar>
   // );
+
+  
 }
 
 // return (
