@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { CSSTransition } from "react-transition-group";
 import axios from "axios";
 
 import { Navbar, Button } from "react-bulma-components";

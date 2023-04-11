@@ -70,7 +70,7 @@ const InternPage = () => {
           </Card>
           <Card>
             <Card.Content>
-              <h1>start date: {Data.start_date}</h1>
+              <h1>Start Date: {Data.start_date}</h1>
               <h1>Stipend: Rs{Data.stipend}</h1>
               <h1>
                 Compensation: {Data.compensation ? Data.compensation : "None"}
