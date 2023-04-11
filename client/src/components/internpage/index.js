@@ -3,6 +3,7 @@ import axios from "axios";
 import Navbar from "../Navbar";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Card, Button } from "react-bulma-components";
 
 const InternPage = () => {
   const { internId } = useParams();
@@ -58,15 +59,41 @@ const InternPage = () => {
   return (
     <React.Fragment>
       <Navbar />
-      <h1>description:{Data.description}</h1>
-      <h1>start date:{Data.start_date}</h1>
-      <h1>stipend:{Data.stipend}</h1>
-      <h1>Compensation:{Data.compensation}</h1>
-      <h1>Application Deadline:{Data.application_deadline}</h1>
-      <h1>supervision Mentorship:{Data.supervision_mentorship}</h1>
-      <h1>Eligibility:{Data.eligiblity_for_FE}</h1>
-      <button onClick={applyForIntern}>Apply</button>
-      <button onClick={getAllInterns}>Get All applications</button>
+      <Card className="mt-4">
+        <Card.Header>
+          <Card.Header.Title>{Data.companyID.companyName}</Card.Header.Title>
+        </Card.Header>
+        <Card.Content>
+          <Card>
+            <h1>Description:</h1>
+            <p>{Data.description}</p>
+          </Card>
+          <Card>
+            <Card.Content>
+              <h1>start date: {Data.start_date}</h1>
+              <h1>Stipend: Rs{Data.stipend}</h1>
+              <h1>
+                Compensation: {Data.compensation ? Data.compensation : "None"}
+              </h1>
+              <h1>Application Deadline: {Data.application_deadline}</h1>
+            </Card.Content>
+            <Card.Content>
+              <h1>Supervision(If Needed):</h1>
+              <p>{Data.supervision_mentorship}</p>
+              <h1>Eligibility for FE:</h1>
+              <p>{Data.eligiblity_for_FE}</p>
+            </Card.Content>
+          </Card>
+        </Card.Content>
+        <Card.Footer>
+          <Card.Footer.Item>
+            <button onClick={applyForIntern}>Apply</button>
+          </Card.Footer.Item>
+          <Card.Footer.Item>
+            <button onClick={getAllInterns}>Get All applications</button>
+          </Card.Footer.Item>
+        </Card.Footer>
+      </Card>
     </React.Fragment>
   );
 };

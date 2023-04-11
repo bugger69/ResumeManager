@@ -129,7 +129,7 @@ router.post("/", isLoggedIn, async (req, res, next) => {
 router.get("/:internId", isLoggedIn, async (req, res, next) => {
   try {
     const internId = req.params.internId;
-    const intern = await Intern.findById(internId);
+    const intern = await Intern.findById(internId).populate("companyID");
     console.log(intern);
     if (!intern) {
       throw new Error("No intern found");
