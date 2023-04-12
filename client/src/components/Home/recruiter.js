@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {Form} from "react-bulma-components" ;
 const Recruiterview = () => {
   const [companyName, setCompanyName] = useState();
   const [description, setDescription] = useState();
@@ -42,47 +43,87 @@ const Recruiterview = () => {
   return (
     <div className="cont">
       <form onSubmit={CreateIntern}>
-        <label htmlFor="companyName">Company Name</label>
-        <input
+      <Form.Field>
+        <Form.Label htmlFor="companyName">Company Name</Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           type="text"
           id="companyName"
           onChange={(e) => setCompanyName(e.target.value)}
         />
-        <label htmlFor="description">description</label>
-        <input
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label htmlFor="description">description</Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           type="text"
           id="description"
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label htmlFor="startDate">Start Date</label>
-        <input
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label htmlFor="startDate">Start Date</Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           type="date"
           id="startDate"
           onChange={(e) => setStartDate(e.target.value)}
         />
-        <label for="endDate">End Date</label>
-        <input type="date" onChange={(e) => setEndDate(e.target.value)} />
-        <label for="stipend">stipend</label>
-        <input type="number" onChange={(e) => setStipend(e.target.value)} />
-        <label for="compensation">compensation</label>
-        <input type="text" onChange={(e) => setCompensation(e.target.value)} />
-        <label for="applicationDeadline">Application Deadline</label>
-        <input
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label for="endDate">End Date</Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input type="date" onChange={(e) => setEndDate(e.target.value)} />
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label for="stipend">stipend</Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input type="number" onChange={(e) => setStipend(e.target.value)} />
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label for="compensation">compensation</Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input type="text" onChange={(e) => setCompensation(e.target.value)} />
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label for="applicationDeadline">Application Deadline</Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           type="date"
           onChange={(e) => setApplicationDeadline(e.target.value)}
         />
-        <label for="supervisionMentorship">Supervision Mentorship</label>
-        <input
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label for="supervisionMentorship">Supervision Mentorship</Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           type="text"
           onChange={(e) => setSupervisionMentorship(e.target.value)}
         />
-        <label for="hiringInformation">Hiring Information</label>
-        <input
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label for="hiringInformation">Hiring Information</Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           type="text"
           onChange={(e) => setHiringInformation(e.target.value)}
         />
-        <label for="eligibility">eligibility</label>
-        <input type="text" onChange={(e) => setEligibility(e.target.value)} />
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label for="eligibility">eligibility</Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input type="text" onChange={(e) => setEligibility(e.target.value)} />
+        </Form.Control>
+        </Form.Field>
         <button type="submit">Post Internship</button>
       </form>
     </div>

@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-
-import "./editForm.css";
+import {Form,Button} from "react-bulma-components"
+import Navbar from "../Navbar"; ;
+// import "./editForm.css";
 
 const EditForm = () => {
   const [username, setUsername] = useState("");
@@ -87,84 +88,112 @@ const EditForm = () => {
 
   
   return (
-    <div className="cont" >
+    <>
+    <Navbar />
       <form className="input" onSubmit={onSubmit}>
-        <label className="label" htmlFor="username">
+      <Form.Field>
+        <Form.Label className="label" htmlFor="username">
           Username:
-        </label>
-        <input
+        </Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           className="input"
           type="text"
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label className="label" htmlFor="dob">
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label className="label" htmlFor="dob">
           Date of birth:
-        </label>
-        <input
+        </Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           className="input"
           type="date"
           id="dob"
           value={dob}
           onChange={(e) => setDob(e.target.value)}
         />
-        <label className="label" htmlFor="padd">
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label className="label" htmlFor="padd">
           Permanent address:
-        </label>
-        <input
+        </Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           className="input"
           type="text"
           id="padd"
           value={paddress}
           onChange={(e) => setPaddress(e.target.value)}
         />
-        <label className="label" htmlFor="cadd">
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label className="label" htmlFor="cadd">
           Current address:
-        </label>
-        <input
+        </Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           className="input"
           type="text"
           id="cadd"
           value={caddress}
           onChange={(e) => setCaddress(e.target.value)}
         />
-
-        <label className="label" htmlFor="branch">
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label className="label" htmlFor="branch">
           Branch:
-        </label>
-        <input
+        </Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           className="input"
           type="text"
           id="branch"
           value={branch}
           onChange={(e) => setBranch(e.target.value)}
         />
-        <label className="label" htmlFor="year">
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label className="label" htmlFor="year">
           Year:
-        </label>
-        <input
+        </Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           className="input"
           type="number"
           id="year"
           value={year}
           onChange={(e) => setYear(e.target.value)}
         />
-        <label className="label" htmlFor="course">
+        </Form.Control>
+        </Form.Field>
+        <Form.Field>
+        <Form.Label className="label" htmlFor="course">
           Course:
-        </label>
-        <input
+        </Form.Label>
+        <Form.Control className="mt-2">
+        <Form.Input
           className="input"
           type="text"
           id="course"
           value={course}
           onChange={(e) => setCourse(e.target.value)}
         />
-        <button className="button" type="submit" value="submit">
+        </Form.Control>
+        </Form.Field>
+        <Button >
           Submit
-        </button>
+        </Button>
       </form>
-    </div>
+    </>
   );
 };
 
