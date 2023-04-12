@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
+import { Card, Button } from "react-bulma-components";
 
 const Tprview = () => {
-  const recievePdf = async () => {
+  const recieveResumes = async () => {
     try {
       const batchData = await axios.get(`http://localhost:4000/api/batch`,{withCredentials : true});
       console.log(batchData);
@@ -40,13 +41,33 @@ const Tprview = () => {
   };
   return (
     <React.Fragment>
-      <p>Upload Pdf</p>
-      <button onClick={Updf}>Go</button>
-      <p>Update Data </p>
-      <button onClick={Udata}>Go</button>
+      <Card className="mt-5 mb-5 mr-5 ml-5 has-text-centered">
+        <Card.Header className="has-text-centered">
+            <Card.Header.Title className="has-text-centered" style={{textAlign: "center", justifyContent: "space-around"}}>Want to upload your resume?</Card.Header.Title>
+        </Card.Header>
+        <Card.Content>
+            <Button onClick={Updf}>Go to Upload Page</Button>
+        </Card.Content>
+        
+      </Card>
+      <Card className="mr-5 ml-5 mb-5 has-text-centered">
+        <Card.Header className="has-text-centered">
+            <Card.Header.Title className="has-text-centered" style={{textAlign: "center", justifyContent: "space-around"}}>Or if you want to update your info?</Card.Header.Title>
+        </Card.Header>
+        <Card.Content>
+            <Button onClick={Udata}>Go to Update Page</Button>
+        </Card.Content>
+      </Card>
+
+      <Card className="mr-5 ml-5 has-text-centered">
+        <Card.Header className="has-text-centered">
+            <Card.Header.Title className="has-text-centered" style={{textAlign: "center", justifyContent: "space-around"}}>Collect Resumes of your Batch?</Card.Header.Title>
+        </Card.Header>
+        <Card.Content>
+            <Button onClick={recieveResumes}>Collect</Button>
+        </Card.Content>
+      </Card>
       
-      <p>Collect Resumes of your Batch</p>
-      <button onClick={recievePdf}>collect</button>
     </React.Fragment>
   );
 };

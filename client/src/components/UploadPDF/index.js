@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Form, Button, Card } from "react-bulma-components";
 
 import Navbar from "../Navbar";
 
-import "./upload.css";
+// import "./upload.css";
 
 const Upload = () => {
   const [file, setFile] = useState();
@@ -31,18 +32,22 @@ const Upload = () => {
   // post to http://localhost:4000/home
   return (
     <>
-      <div className="">
       <Navbar />
-      </div>
-
-      <form className="container float-right d-inline-block" style={{marginTop: "6em"}}  onSubmit={onSubmit}>
-        <input
-          type="file"
-          id="pdf-file"
-          onChange={(e) => setFile(e.target.files[0])}
-        />
-        <button type="submit">Upload</button>
-      </form>
+      <Card>
+        <form
+          className="ml-5 mr-5"
+          style={{ marginTop: "6em" }}
+          onSubmit={onSubmit}
+        >
+          <Form.Control className="is-justify-content-space-around">
+            <Form.InputFile
+              id="pdf-file"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+            <Button type="submit">Upload</Button>
+          </Form.Control>
+        </form>
+      </Card>
     </>
   );
 };

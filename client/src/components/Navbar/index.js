@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { CSSTransition } from "react-transition-group";
 import axios from "axios";
 
 import { Navbar, Button } from "react-bulma-components";
@@ -71,7 +70,7 @@ function Nav() {
         <Navbar.Container>
           <Navbar.Item href="/">Homepage</Navbar.Item>
           <Navbar.Item href="/editinfo">Change Your Info</Navbar.Item>
-          <Navbar.Item href="/upload">UploadPDF</Navbar.Item>
+          <Navbar.Item href="/upload">Upload Resume</Navbar.Item>
           <Navbar.Item href="/allinterns">Check Internships</Navbar.Item>
         </Navbar.Container>
         <Navbar.Container align="end" className="is-vcentered mt-auto mb-auto">
