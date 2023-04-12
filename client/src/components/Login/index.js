@@ -63,7 +63,6 @@ const Login = (props) => {
             <Form.Control className="mt-2">
               <Form.Input
                 type="password"
-              type="password"
                 color="primary"
                 value={password}
                 onChange={(e) => {
