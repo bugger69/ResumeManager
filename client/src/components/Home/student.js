@@ -15,7 +15,7 @@ const Studentview = () => {
             <Card.Header.Title className="has-text-centered" style={{textAlign: "center", justifyContent: "space-around"}}>Want to upload your resume?</Card.Header.Title>
         </Card.Header>
         <Card.Content>
-            <Button onClick={Updf}>Upload Pdf</Button>
+            <Button onClick={Updf}>Go to Upload Page</Button>
         </Card.Content>
         
       </Card>
@@ -24,7 +24,7 @@ const Studentview = () => {
             <Card.Header.Title className="has-text-centered" style={{textAlign: "center", justifyContent: "space-around"}}>Or if you want to update your info?</Card.Header.Title>
         </Card.Header>
         <Card.Content>
-            <Button onClick={Udata}>Update Data</Button>
+            <Button onClick={Udata}>Go to Update Page</Button>
         </Card.Content>
       </Card>
     </div>

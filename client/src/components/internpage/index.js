@@ -59,28 +59,28 @@ const InternPage = () => {
   return (
     <React.Fragment>
       <Navbar />
-      <Card className="mt-4">
+      <Card className="mt-4 ml-2 mr-2">
         <Card.Header>
-          <Card.Header.Title>{Data.companyID.companyName}</Card.Header.Title>
+          <Card.Header.Title  className="is-justify-content-space-around">{Data.companyID.companyName}</Card.Header.Title>
         </Card.Header>
         <Card.Content>
-          <Card>
-            <h1>Description:</h1>
+          <Card   className="ml-1">
+            <h1 className="has-text-weight-bold">Description:</h1>
             <p>{Data.description}</p>
           </Card>
           <Card>
             <Card.Content>
-              <h1>Start Date: {Data.start_date}</h1>
-              <h1>Stipend: Rs{Data.stipend}</h1>
+              <h1><span className="has-text-weight-bold">Start Date:</span> {Data.start_date}</h1>
+              <h1><span className="has-text-weight-bold">Stipend:</span> Rs{Data.stipend}</h1>
               <h1>
-                Compensation: {Data.compensation ? Data.compensation : "None"}
+                <span className="has-text-weight-bold">Compensation:</span> {Data.compensation ? Data.compensation : "None"}
               </h1>
-              <h1>Application Deadline: {Data.application_deadline}</h1>
+              <h1><span className="has-text-weight-bold">Application Deadline:</span> {Data.application_deadline}</h1>
             </Card.Content>
             <Card.Content>
-              <h1>Supervision(If Needed):</h1>
+              <h1  className="has-text-weight-bold">Supervision(If Needed):</h1>
               <p>{Data.supervision_mentorship}</p>
-              <h1>Eligibility for FE:</h1>
+              <h1  className="has-text-weight-bold">Eligibility for FE:</h1>
               <p>{Data.eligiblity_for_FE}</p>
             </Card.Content>
           </Card>

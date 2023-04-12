@@ -25,8 +25,8 @@ const Allinterns = () => {
       <div className="mt-3">
         {data.map(function (val) {
           return (
-            <Card>
-              <Card.Header>
+            <Card className="ml-3 mb-3">
+              <Card.Header className="is-justify-content-space-around">
                 <a href={address + val._id}>{val.companyID.companyName}</a>
               </Card.Header>
               <Card.Content>
