@@ -36,7 +36,7 @@ const Register = () => {
     axios
       .post("http://localhost:4000/api/register", obj)
       .then((res) => {
-        alert("Logged in!!!");
+        alert("User Registered!");
         window.location.href = "/";
       })
       .catch((e) => {

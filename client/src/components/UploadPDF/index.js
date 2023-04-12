@@ -42,6 +42,7 @@ const Upload = () => {
           <Form.Control className="is-justify-content-space-around">
             <Form.InputFile
               id="pdf-file"
+              className="mb-3"
               onChange={(e) => setFile(e.target.files[0])}
             />
             <Button type="submit">Upload</Button>

@@ -90,7 +90,7 @@ const EditForm = () => {
   return (
     <>
       <Navbar />
-      <form className="input" onSubmit={onSubmit}>
+      <form className="mt-5" onSubmit={onSubmit} >
         <Form.Field>
           <Form.Label className="label" htmlFor="username">
             Username:
