@@ -3,7 +3,7 @@ import axios from "axios";
 import { Card, Button } from "react-bulma-components";
 
 const Tprview = () => {
-  const recievePdf = async () => {
+  const recieveResumes = async () => {
     try {
       const batchData = await axios.get(`http://localhost:4000/api/batch`,{withCredentials : true});
       console.log(batchData);
@@ -64,7 +64,7 @@ const Tprview = () => {
             <Card.Header.Title className="has-text-centered" style={{textAlign: "center", justifyContent: "space-around"}}>Collect Resumes of your Batch?</Card.Header.Title>
         </Card.Header>
         <Card.Content>
-            <Button onClick={Udata}>Collect</Button>
+            <Button onClick={recieveResumes}>Collect</Button>
         </Card.Content>
       </Card>
       
