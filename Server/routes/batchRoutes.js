@@ -167,7 +167,7 @@ router.get("/resumes/:batchId", isLoggedIn, isTpr, async (req, res, next) => {
         // const downloadUrl = `https://f${bucketName}.backblazeb2.com/file/${bucketName}/${fileName}?Authorization=${auth.data.authorizationToken}`;
         const file = await b2.downloadFileById({
           fileId: fileId,
-          responseType: "json",
+          responseType: "stream",
           onDownloadProgress: (event) => {},
         });
         // console.log(downloadUrl);

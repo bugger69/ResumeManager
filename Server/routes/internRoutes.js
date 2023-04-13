@@ -265,7 +265,7 @@ router.get("/applications/:internId", isLoggedIn, isRecruiter, async (req, res, 
 
         const file = await b2.downloadFileById({
           fileId: fileId,
-          responseType: "json",
+          responseType: "stream",
           onDownloadProgress: (event) => {},
         });
         console.log(fileName);

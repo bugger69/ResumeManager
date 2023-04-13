@@ -311,7 +311,7 @@ router.put("/user", isLoggedIn , async (req, res, next) => { // add checks to ch
 
       const file = await b2.downloadFileById({
         fileId: fileId,
-        responseType: "json",
+        responseType: "stream",
         onDownloadProgress: (event) => {},
       });
       
