@@ -118,7 +118,7 @@ router.post("/", isLoggedIn, async (req, res, next) => {
  *        basePath: /api/v1
  */
 
-router.get("/resumes/:batchId", isLoggedIn, async (req, res, next) => {
+router.get("/resumes/:batchId", isLoggedIn, isTpr, async (req, res, next) => {
   // add a check for if the current user is  the tpr of the requested batch.
   try {
     const { batchId } = req.params;

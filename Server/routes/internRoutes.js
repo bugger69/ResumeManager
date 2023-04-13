@@ -227,7 +227,7 @@ router.post("/:internId", isLoggedIn, async (req, res, next) => {
  *        basePath: /api/v1
  */
 
-router.get("/applications/:internId", isLoggedIn, async (req, res, next) => {
+router.get("/applications/:internId", isLoggedIn, isRecruiter, async (req, res, next) => {
   // needs a ton of fixing
   try {
     const internId = req.params.internId;

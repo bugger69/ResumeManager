@@ -56,12 +56,14 @@ function Nav() {
   return (
     <Navbar className="is-dark">
       <Navbar.Brand>
-        <Navbar.Item href="#"> {/** Add nith logo here */ }
+        <Navbar.Item href="#">
+          {" "}
+          {/** Add nith logo here */}
           <img
-            alt="Bulma: a modern CSS framework based on Flexbox"
-            height="28"
-            src="https://bulma.io/images/bulma-logo.png"
-            width="112"
+            alt="NITH"
+            height="30"
+            src="https://m.media-amazon.com/images/I/61jC7RqcloL.png"
+            width="40"
           />
         </Navbar.Item>
         <Navbar.Burger />.
@@ -75,14 +77,18 @@ function Nav() {
         </Navbar.Container>
         <Navbar.Container align="end" className="is-vcentered mt-auto mb-auto">
           {!ctx.isLoggedIn ? (
-            <Navbar.Item href="/login" className="has-text-white">Login</Navbar.Item>
+            <Navbar.Item href="/login" className="has-text-white">
+              Login
+            </Navbar.Item>
           ) : (
             <React.Fragment></React.Fragment>
           )}
         </Navbar.Container>
         <Navbar.Container align="end" className="is-vcentered mt-auto mb-auto">
           {!ctx.isLoggedIn ? (
-            <Navbar.Item href="/register" className="has-text-white mt-auto">Register</Navbar.Item>
+            <Navbar.Item href="/register" className="has-text-white mt-auto">
+              Register
+            </Navbar.Item>
           ) : (
             <React.Fragment></React.Fragment>
           )}
@@ -112,8 +118,6 @@ function Nav() {
 
   //   </Navbar>
   // );
-
-  
 }
 
 // return (
