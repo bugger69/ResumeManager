@@ -1,19 +1,5 @@
 Tasks:
 
-SideNote: try not to clutter here.
-
-Note: Homepage is broken, and the failed login needs work, but other than that, rest seems to be working fine.
-
-Continue with the Homepage @anubhav
-
--> Focus only on the student and tpr view at the moment.
-
--> Make sure it leads to all required places(check the use cases in srs)
-
-Fix the navbar @manthan
-
--> FIX THE CSS OF THE NAVBAR AT LEAST.
-
 =======
 
 To start the application, run the following
@@ -23,8 +9,6 @@ git pull
 if you haven't yet cloned the repository, run
 
 `git clone <insert-repo-link-here>`
-
-(ctrl + shift + 5) or open a split terminal
 
 to configure backblaze
 
@@ -46,7 +30,9 @@ APPLICATION_KEY='Your Application Key'
 
 Now to run the project:
 
-on the left terminal
+(ctrl + shift + 5) or open a split terminal
+
+on the left terminal:
 
 cd Server
 
@@ -54,7 +40,7 @@ npm i
 
 npm run dev
 
-on the right terminal
+on the right terminal:
 
 cd client
 
@@ -64,7 +50,6 @@ npm start
 
 SERVER DOCS: When the server is running, those working on the client side can see the server docs at "http://localhost:4000/api-docs/"
 
-NOTE: frontend might be broken for a while, either me or the frontend team will fix it.
 
 29/1/23 19:01
 
@@ -96,4 +81,4 @@ now resumes are uploaded to backblaze, and a reference is stored in mongodb to l
 
 frontend patched up, files are uploading and login/register possible. Still need a logout button and error messages are a bit weird, gotta fix that too.
   
-^^ see commit messages for further logs.
+^^ see github commit messages for further logs.
