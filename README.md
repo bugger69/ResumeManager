@@ -34,19 +34,19 @@ Now to run the project:
 
 on the left terminal:
 
-cd Server
+# cd Server
 
-npm i
+# npm i
 
-npm run dev
+# npm run dev
 
 on the right terminal:
 
-cd client
+# cd client
 
-npm i
+# npm i
 
-npm start
+# npm start
 
 SERVER DOCS: When the server is running, those working on the client side can see the server docs at "http://localhost:4000/api-docs/"
 
