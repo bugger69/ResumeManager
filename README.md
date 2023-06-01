@@ -1,8 +1,6 @@
-Tasks:
-
 =======
 
-To start the application, run the following
+# To clone the repo
 
 git pull
 
@@ -10,7 +8,7 @@ if you haven't yet cloned the repository, run
 
 `git clone <insert-repo-link-here>`
 
-to configure backblaze
+ # To configure backblaze
 
 Create a backblaze account.
 
@@ -34,22 +32,21 @@ Now to run the project:
 
 on the left terminal:
 
-# cd Server
+ cd Server
 
-# npm i
+ npm i
 
-# npm run dev
+ npm run dev
 
 on the right terminal:
 
-# cd client
+ cd client
 
-# npm i
+ npm i
 
-# npm start
+ npm start
 
 SERVER DOCS: When the server is running, those working on the client side can see the server docs at "http://localhost:4000/api-docs/"
-
 
 29/1/23 19:01
 
