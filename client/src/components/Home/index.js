@@ -43,6 +43,7 @@ const Home = (props) => {
       {data.designation === "student" && <Studentview />}
       {data.designation === "tpr" && <Tprview />}
       {data.designation === "comp_representative" && <Recruiterview />}
+      {data.designation === "admin" && <Tprview/>}
     </React.Fragment>
   );
 };
