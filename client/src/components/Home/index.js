@@ -4,7 +4,7 @@ import Studentview from "./student";
 import Tprview from "./tpr";
 import Recruiterview from "./recruiter";
 import Navbar from "../Navbar";
-import "./home.css" ;
+import "./home.css";
 
 import AuthContext from "../store/auth-context";
 
@@ -22,21 +22,24 @@ const Home = (props) => {
         // console.log(ctx.isLoggedIn);
         // console.log(localStorage.getItem('isLoggedIn'));
         // console.log(!ctx.isLoggedIn&& localStorage.getItem('isLoggedIn'));
-        if(!ctx.isLoggedIn && localStorage.getItem('isLoggedIn')) {
+        console.log("fuck1",ctx.isLoggedIn);
+        console.log("fuck2", localStorage.getItem("isLoggedIn"));
+        if (!ctx.isLoggedIn && localStorage.getItem("isLoggedIn")) {
           console.log("here", !ctx.isLoggedIn);
-          window.location.href = '/login';
-      }
+          window.location.href = "/login";
+        }
         //   window.location.href = "/";
       })
       .catch((err) => {
         console.log(err);
+        window.location.href = "/login";
       });
   }, [setData, ctx]);
   // console.log(data);
   // console.log(data.designation === "comp_representative");
   return (
     <React.Fragment>
-    <Navbar />
+      <Navbar />
       {data.designation === "student" && <Studentview />}
       {data.designation === "tpr" && <Tprview />}
       {data.designation === "comp_representative" && <Recruiterview />}
