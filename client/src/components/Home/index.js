@@ -22,8 +22,6 @@ const Home = (props) => {
         // console.log(ctx.isLoggedIn);
         // console.log(localStorage.getItem('isLoggedIn'));
         // console.log(!ctx.isLoggedIn&& localStorage.getItem('isLoggedIn'));
-        console.log("fuck1",ctx.isLoggedIn);
-        console.log("fuck2", localStorage.getItem("isLoggedIn"));
         if (!ctx.isLoggedIn && localStorage.getItem("isLoggedIn")) {
           console.log("here", !ctx.isLoggedIn);
           window.location.href = "/login";

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Navbar from "../Navbar";
-import {Form} from "react-bulma-components" ;
+import {Form, Button} from "react-bulma-components";
 
 import "./register.css";
 
@@ -45,10 +45,10 @@ const Register = () => {
   };
   return (<>
     <Navbar />
-    <div className="cont">
-      <form onSubmit={onSubmit}>
+    <div className="cont m-2">
+      <form onSubmit={onSubmit} className="m-4">
         <Form.Field>
-          <Form.Label className="label" htmlFor="username">
+          <Form.Label className="label mt-4" htmlFor="username">
             Username:
           </Form.Label>
           <Form.Control className="mt-2">
@@ -190,9 +190,9 @@ const Register = () => {
             />
           </Form.Control>
         </Form.Field>
-        <button className="button" type="submit" value="submit">
+        <Button className="mb-4" type="submit" value="submit">
           Submit
-        </button>
+        </Button>
       </form>
     </div>
   </>
