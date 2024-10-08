@@ -4,7 +4,6 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyparser = require("body-parser");
 const session = require("express-session");
 const cors = require("cors");
 const passport = require("passport");

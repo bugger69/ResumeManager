@@ -46,20 +46,21 @@ router.post("/resume", upload.single("file"), isLoggedIn, async (req, res) => {
     // console.log(req.file);
     const fileContents = req.file.buffer;
     const bucket = await GetBucket();
-    // console.log(bucket);
+    console.log(bucket);
     const bucketId = bucket.buckets[0].bucketId;
     const uploadUrl = await b2.getUploadUrl({
       bucketId: bucketId,
     });
     // console.log(uploadUrl);
-    const response = await b2.uploadFile({
+    const config = {
       uploadUrl: uploadUrl.data.uploadUrl,
       uploadAuthToken: uploadUrl.data.authorizationToken,
       fileName: req.file.originalname,
       data: fileContents,
       contentLength: fileContents.length,
-    });
-    // console.log(response);
+    }
+    const response = await b2.uploadFile(config);
+    console.log(response);
     const resumeDetails = {
       fileId: response.data.fileId,
       fileName: response.data.fileName,
